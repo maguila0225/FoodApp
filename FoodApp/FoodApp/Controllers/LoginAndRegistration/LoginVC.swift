@@ -15,7 +15,6 @@ class LoginVC: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Login"
         loginButton.layer.cornerRadius = 10
         pageReset()
     }
