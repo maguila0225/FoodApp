@@ -18,6 +18,9 @@
 		5BD93E1727AB9AC400F0C9B9 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E1627AB9AC400F0C9B9 /* RegisterVC.swift */; };
 		5BD93E1A27ABCEAC00F0C9B9 /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E1927ABCEAC00F0C9B9 /* LocationVC.swift */; };
 		5BD93E1C27ABFC6B00F0C9B9 /* UITextFieldPaddingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E1B27ABFC6B00F0C9B9 /* UITextFieldPaddingExtension.swift */; };
+		5BD93E1E27ACEE3700F0C9B9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E1D27ACEE3700F0C9B9 /* UserModel.swift */; };
+		5BD93E2427AE598300F0C9B9 /* SizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E2327AE598300F0C9B9 /* SizeExtension.swift */; };
+		5BD93E2727AE74BA00F0C9B9 /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E2627AE74BA00F0C9B9 /* LocationSearchVC.swift */; };
 		C45BA2B4CE43D5C812B77C48 /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,9 @@
 		5BD93E1627AB9AC400F0C9B9 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		5BD93E1927ABCEAC00F0C9B9 /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
 		5BD93E1B27ABFC6B00F0C9B9 /* UITextFieldPaddingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldPaddingExtension.swift; sourceTree = "<group>"; };
+		5BD93E1D27ACEE3700F0C9B9 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		5BD93E2327AE598300F0C9B9 /* SizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeExtension.swift; sourceTree = "<group>"; };
+		5BD93E2627AE74BA00F0C9B9 /* LocationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		820E126AFFDF64B3801479B1 /* Pods-FoodApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.release.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.release.xcconfig"; sourceTree = "<group>"; };
 		EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FC71A318EEB9C9AAAB0A7C /* Pods-FoodApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 		5BD93E0F27AB7FE000F0C9B9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5BD93E1D27ACEE3700F0C9B9 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -120,8 +127,8 @@
 		5BD93E1027AB7FFB00F0C9B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BD93E2527AE59AE00F0C9B9 /* Utilities */,
 				5BD93E0227AB7F3F00F0C9B9 /* Assets.xcassets */,
-				5BD93E1B27ABFC6B00F0C9B9 /* UITextFieldPaddingExtension.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -129,12 +136,38 @@
 		5BD93E1327AB81C900F0C9B9 /* LoginAndRegistration */ = {
 			isa = PBXGroup;
 			children = (
-				5BD93E1627AB9AC400F0C9B9 /* RegisterVC.swift */,
-				5BD93E1127AB816200F0C9B9 /* IntroVC.swift */,
-				5BD93E1427AB8C4D00F0C9B9 /* LoginVC.swift */,
-				5BD93E1927ABCEAC00F0C9B9 /* LocationVC.swift */,
+				5BD93E2027AE3BFB00F0C9B9 /* Registration */,
+				5BD93E1F27AE3BF400F0C9B9 /* Login */,
 			);
 			path = LoginAndRegistration;
+			sourceTree = "<group>";
+		};
+		5BD93E1F27AE3BF400F0C9B9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5BD93E1127AB816200F0C9B9 /* IntroVC.swift */,
+				5BD93E1427AB8C4D00F0C9B9 /* LoginVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5BD93E2027AE3BFB00F0C9B9 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				5BD93E1627AB9AC400F0C9B9 /* RegisterVC.swift */,
+				5BD93E1927ABCEAC00F0C9B9 /* LocationVC.swift */,
+				5BD93E2627AE74BA00F0C9B9 /* LocationSearchVC.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		5BD93E2527AE59AE00F0C9B9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5BD93E1B27ABFC6B00F0C9B9 /* UITextFieldPaddingExtension.swift */,
+				5BD93E2327AE598300F0C9B9 /* SizeExtension.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		80A66F50BC7E9A61BE7AB693 /* Pods */ = {
@@ -157,6 +190,7 @@
 				5BD93DF227AB7F3D00F0C9B9 /* Sources */,
 				5BD93DF327AB7F3D00F0C9B9 /* Frameworks */,
 				5BD93DF427AB7F3D00F0C9B9 /* Resources */,
+				60A1AFB0B310C0E9FDBCEEE1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,6 +248,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		60A1AFB0B310C0E9FDBCEEE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodApp/Pods-FoodApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodApp/Pods-FoodApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodApp/Pods-FoodApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DCF4538CA5B6CF017DBC02EB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -243,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BD93E2427AE598300F0C9B9 /* SizeExtension.swift in Sources */,
 				5BD93E1A27ABCEAC00F0C9B9 /* LocationVC.swift in Sources */,
 				5BD93DFE27AB7F3D00F0C9B9 /* SplashVC.swift in Sources */,
 				5BD93E1227AB816200F0C9B9 /* IntroVC.swift in Sources */,
@@ -250,6 +302,8 @@
 				5BD93E1727AB9AC400F0C9B9 /* RegisterVC.swift in Sources */,
 				5BD93E1C27ABFC6B00F0C9B9 /* UITextFieldPaddingExtension.swift in Sources */,
 				5BD93DFC27AB7F3D00F0C9B9 /* SceneDelegate.swift in Sources */,
+				5BD93E1E27ACEE3700F0C9B9 /* UserModel.swift in Sources */,
+				5BD93E2727AE74BA00F0C9B9 /* LocationSearchVC.swift in Sources */,
 				5BD93E1527AB8C4D00F0C9B9 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

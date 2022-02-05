@@ -14,10 +14,9 @@ class IntroVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerButton.layer.cornerRadius = 10
-        loginButton.layer.cornerRadius = 10
-
+        setupView()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -25,5 +24,12 @@ class IntroVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated);
+    }
+}
+
+extension IntroVC{
+    func setupView(){
+        registerButton.layer.cornerRadius = 10
+        loginButton.layer.cornerRadius = 10
     }
 }

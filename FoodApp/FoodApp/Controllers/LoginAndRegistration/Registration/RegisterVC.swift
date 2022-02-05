@@ -22,24 +22,45 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var passwordConfirmation: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     
+    var userAddress = Address()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        pageReset()
+        setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fillInAddress()
+    }
+    
+    @IBAction func locationButtonTapped(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LocationVC") as! LocationVC
+        vc.selectionDelegate = self
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func registerAction(_ sender: Any) {
         
     }
     
-    @IBAction func getLocationAction(_ sender: Any) {
-        
-    }
-    
 }
 
 extension RegisterVC{
+    // MARK: Setup View
+    func setupView() {
+        registerButton.isUserInteractionEnabled = false
+        registerButton.backgroundColor = .systemGray4
+        setupUI()
+    }
     
+    func setupUI() {
+        personImage.layer.cornerRadius = personImage.frame.size.width / 2
+        personImage.layer.borderWidth = 5
+        personImage.layer.borderColor = UIColor.lightGray.cgColor
+        registerButton.layer.cornerRadius = 10
+    }
+    
+    //MARK: - Text Field Verification
     @IBAction func firstNameChange(_ sender: Any) {
         textfieldVerification()
     }
@@ -79,18 +100,10 @@ extension RegisterVC{
         textfieldVerification()
     }
     
-    func setupUI() {
-        personImage.layer.cornerRadius = personImage.frame.size.width / 2
-        personImage.layer.borderWidth = 5
-        personImage.layer.borderColor = UIColor.lightGray.cgColor
-        registerButton.layer.cornerRadius = 10
-    }
-    
     func textfieldVerification(){
         if (firstName.text == "" ||
             lastName.text == "" ||
             email.text == "" ||
-            houseNumber.text == "" ||
             street.text == "" ||
             district.text == "" ||
             postalCode.text == "" ||
@@ -106,9 +119,17 @@ extension RegisterVC{
         }
     }
     
+    // MARK: - Fill in User Address
+    func fillInAddress(){
+        houseNumber.text = userAddress.streetNumber
+        street.text = userAddress.streetName
+        district.text = userAddress.district
+        city.text = userAddress.city
+        postalCode.text = userAddress.postalCode
+    }
+    
+    // MARK: - Page Reset
     func pageReset(){
-        registerButton.isUserInteractionEnabled = false
-        registerButton.backgroundColor = .systemGray4
         firstName.text = ""
         lastName.text = ""
         email.text = ""
@@ -119,5 +140,12 @@ extension RegisterVC{
         city.text = ""
         password.text = ""
         passwordConfirmation.text = ""
+    }
+}
+
+// MARK: - Pass Location Data Delegate
+extension RegisterVC: PassLocationDelegate{
+    func passLocation(userAddress: Address) {
+        self.userAddress = userAddress
     }
 }

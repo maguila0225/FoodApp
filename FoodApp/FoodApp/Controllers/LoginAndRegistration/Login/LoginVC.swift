@@ -8,30 +8,36 @@
 import UIKit
 
 class LoginVC: UIViewController{
-
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginButton.layer.cornerRadius = 10
+        setupView()
         pageReset()
     }
-
+    
     @IBAction func loginAction(_ sender: Any) {
         NSLog("login button pressed")
     }
+    
+}
+
+extension LoginVC{
+    // MARK: - Setup View
+    func setupView(){
+        loginButton.layer.cornerRadius = 10
+    }
+    
+    // MARK: - Text Field Verification
     @IBAction func usernameChanged(_ sender: Any) {
         textfieldVerification()
     }
     @IBAction func passwordChanged(_ sender: Any) {
         textfieldVerification()
     }
-    
-}
-
-extension LoginVC{
     
     func textfieldVerification(){
         if usernameTextField.text == "" || passwordTextField.text == "" {
@@ -44,6 +50,7 @@ extension LoginVC{
         }
     }
     
+    //MARK: - Page Reset
     func pageReset(){
         loginButton.isUserInteractionEnabled = false
         loginButton.backgroundColor = .systemGray4
