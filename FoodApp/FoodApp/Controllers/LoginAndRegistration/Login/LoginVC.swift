@@ -34,6 +34,7 @@ extension LoginVC{
           guard let strongSelf = self else { return }
             if let error = error{
                 print(error.localizedDescription)
+                return
             }
             self!.checkUserID()
             let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
@@ -44,6 +45,8 @@ extension LoginVC{
     func checkUserID(){
         if Auth.auth().currentUser != nil{
             print("User Signed In \n uid: \(Auth.auth().currentUser!.uid) \n email: \(Auth.auth().currentUser!.email!)")
+            UserDefaults.standard.set(true, forKey: "foodAppIsSignedIn")
+            UserDefaults.standard.synchronize()
         }
     }
 }

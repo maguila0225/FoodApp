@@ -15,8 +15,40 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BxT-cV-zEP">
+                                <rect key="frame" x="76" y="94" width="223" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7Gt-jz-EDD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eL3-hV-ISS">
+                                <rect key="frame" x="16" y="174" width="343" height="50"/>
+                                <color key="backgroundColor" red="0.99423975379999996" green="0.0" blue="0.016570662560000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="WP2-zW-7H8"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Out">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signOut:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1yl-TA-UtW"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="BxT-cV-zEP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="8oR-5N-fN3"/>
+                            <constraint firstItem="eL3-hV-ISS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="KFA-jY-AYu"/>
+                            <constraint firstItem="eL3-hV-ISS" firstAttribute="top" secondItem="BxT-cV-zEP" secondAttribute="bottom" constant="30" id="Qn2-8y-43L"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="eL3-hV-ISS" secondAttribute="trailing" constant="16" id="fxJ-DJ-E61"/>
+                            <constraint firstItem="BxT-cV-zEP" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="pHv-dZ-XbQ"/>
+                        </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="812"/>
