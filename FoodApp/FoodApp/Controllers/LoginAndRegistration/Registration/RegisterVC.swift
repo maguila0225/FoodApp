@@ -121,8 +121,7 @@ extension RegisterVC{
     
     // MARK: - Fill in User Address
     func fillInAddress(){
-        houseNumber.text = userAddress.streetNumber
-        street.text = userAddress.streetName
+        street.text = userAddress.streetNumber + userAddress.streetName
         district.text = userAddress.district
         city.text = userAddress.city
         postalCode.text = userAddress.postalCode

@@ -840,6 +840,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Cancel">
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle3"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="AA3-kP-yQK" eventType="touchUpInside" id="448-s1-fSf"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search your Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pVg-Ca-RLn">
                                         <rect key="frame" x="16" y="15" width="278" height="36"/>
@@ -918,6 +921,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="confirmAddressAction:" destination="a1z-aQ-DVe" eventType="touchUpInside" id="JeI-j9-4mX"/>
+                                            <action selector="confirmAddressAction:" destination="AA3-kP-yQK" eventType="touchUpInside" id="lHZ-am-Qos"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -952,6 +956,12 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="812"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="a6p-su-6IV" id="WAE-Jq-rlY"/>
+                        <outlet property="confirmAddressButton" destination="gWL-UF-8wH" id="dYz-js-iuL"/>
+                        <outlet property="searchTableView" destination="lVe-Q9-DWU" id="Kv9-XK-goN"/>
+                        <outlet property="searchTextField" destination="pVg-Ca-RLn" id="05M-nG-FfB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vb4-AH-xvy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
