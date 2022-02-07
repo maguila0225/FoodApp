@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginVC: UIViewController{
     
@@ -20,9 +21,31 @@ class LoginVC: UIViewController{
     }
     
     @IBAction func loginAction(_ sender: Any) {
-        NSLog("login button pressed")
+        signInWithFirebase(email: usernameTextField.text!, password: passwordTextField.text!)
     }
     
+}
+
+extension LoginVC{
+    func signInWithFirebase(email: String, password: String){
+        print("username: \(usernameTextField.text!)")
+        print("password: \(passwordTextField.text!)")
+        Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { [weak self] authResult, error in
+          guard let strongSelf = self else { return }
+            if let error = error{
+                print(error.localizedDescription)
+            }
+            self!.checkUserID()
+            let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            self!.navigationController!.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func checkUserID(){
+        if Auth.auth().currentUser != nil{
+            print("User Signed In \n uid: \(Auth.auth().currentUser!.uid) \n email: \(Auth.auth().currentUser!.email!)")
+        }
+    }
 }
 
 extension LoginVC{

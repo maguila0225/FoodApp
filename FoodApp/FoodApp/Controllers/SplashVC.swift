@@ -13,6 +13,11 @@ class SplashVC: UIViewController {
         super.viewDidLoad()
         
     }
-
+    
 }
 
+extension SplashVC{
+    func signInCheck(){
+        
+    }
+}

@@ -8,19 +8,10 @@
 import Foundation
 import CoreLocation
 
-struct User{
-    var email: String = ""
-    var password: String = ""
-    var Info: UserInfo
-}
-
-struct UserInfo{
+struct UserInfo: Codable {
     var firstName: String = ""
     var lastName: String = ""
-    var address: Address
-}
-
-struct Address{
+    var email: String = ""
     var houseNumber: String = ""
     var streetNumber: String = ""
     var streetName: String = ""
@@ -29,4 +20,7 @@ struct Address{
     var postalCode: String = ""
     var longitude: Double = 0
     var latitude: Double = 0
+    
 }
+
+

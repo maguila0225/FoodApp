@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class RegisterVC: UIViewController {
     
@@ -22,7 +24,9 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var passwordConfirmation: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     
-    var userAddress = Address()
+    var userInfo = UserInfo()
+    
+    let firestoreDatabase = Firestore.firestore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +45,44 @@ class RegisterVC: UIViewController {
     
     @IBAction func registerAction(_ sender: Any) {
         
+        guard password.text == passwordConfirmation.text else {
+            NSLog("mismatch Password")
+            return
+        }
+        updateUserInfo()
     }
     
+}
+
+extension RegisterVC{
+    func updateUserInfo(){
+        userInfo.firstName = self.firstName.text!
+        userInfo.lastName = self.lastName.text!
+        userInfo.email = self.email.text!
+        userInfo.houseNumber = self.houseNumber.text ?? ""
+        encodeData()
+    }
+    
+    fileprivate func encodeData(){
+        let encodedUser = encodeInfo(inputUser: userInfo)
+        
+        registerWithFirebase(encodedUser)
+    }
+    
+    fileprivate func registerWithFirebase(_ encodedUser: [String : Any]) {
+        Auth.auth().createUser(withEmail: email.text!, password: password.text!, completion: { result, error in
+            if error != nil{
+                NSLog("\(String(describing: error))")
+            }
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            print("uid: \(Auth.auth().currentUser!.uid)")
+            print("email: \(self.email.text!)")
+            print("password \(self.password.text!)")
+            let docRef = self.firestoreDatabase.collection("UserInfo").document(uid)
+            docRef.setData(encodedUser)
+        })
+    }
+
 }
 
 extension RegisterVC{
@@ -121,10 +161,10 @@ extension RegisterVC{
     
     // MARK: - Fill in User Address
     func fillInAddress(){
-        street.text = userAddress.streetNumber + userAddress.streetName
-        district.text = userAddress.district
-        city.text = userAddress.city
-        postalCode.text = userAddress.postalCode
+        street.text = userInfo.streetNumber + userInfo.streetName
+        district.text = userInfo.district
+        city.text = userInfo.city
+        postalCode.text = userInfo.postalCode
     }
     
     // MARK: - Page Reset
@@ -144,7 +184,7 @@ extension RegisterVC{
 
 // MARK: - Pass Location Data Delegate
 extension RegisterVC: PassLocationDelegate{
-    func passLocation(userAddress: Address) {
-        self.userAddress = userAddress
+    func passLocation(userInfo: UserInfo) {
+        self.userInfo = userInfo
     }
 }

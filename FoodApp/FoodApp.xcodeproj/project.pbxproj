@@ -22,6 +22,10 @@
 		5BD93E2427AE598300F0C9B9 /* SizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E2327AE598300F0C9B9 /* SizeExtension.swift */; };
 		5BD93E2727AE74BA00F0C9B9 /* LocationSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E2627AE74BA00F0C9B9 /* LocationSearchVC.swift */; };
 		5BD93E2927AFEC4000F0C9B9 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E2827AFEC3F00F0C9B9 /* LocationModel.swift */; };
+		5BD93E3327B0E25000F0C9B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E3227B0E25000F0C9B9 /* GoogleService-Info.plist */; };
+		5BD93E3527B0F90200F0C9B9 /* CoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E3427B0F90200F0C9B9 /* CoderExtension.swift */; };
+		5BD93E3727B101C500F0C9B9 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E3627B101C500F0C9B9 /* Home.storyboard */; };
+		5BD93E3927B1078000F0C9B9 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E3827B1078000F0C9B9 /* HomeVC.swift */; };
 		C45BA2B4CE43D5C812B77C48 /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +47,10 @@
 		5BD93E2327AE598300F0C9B9 /* SizeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeExtension.swift; sourceTree = "<group>"; };
 		5BD93E2627AE74BA00F0C9B9 /* LocationSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchVC.swift; sourceTree = "<group>"; };
 		5BD93E2827AFEC3F00F0C9B9 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		5BD93E3227B0E25000F0C9B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5BD93E3427B0F90200F0C9B9 /* CoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoderExtension.swift; sourceTree = "<group>"; };
+		5BD93E3627B101C500F0C9B9 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		5BD93E3827B1078000F0C9B9 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		820E126AFFDF64B3801479B1 /* Pods-FoodApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.release.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.release.xcconfig"; sourceTree = "<group>"; };
 		EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FC71A318EEB9C9AAAB0A7C /* Pods-FoodApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +102,7 @@
 				5BD93E0E27AB7FD800F0C9B9 /* Controllers */,
 				5BD93E0D27AB7FD000F0C9B9 /* Views */,
 				5BD93E0727AB7F3F00F0C9B9 /* Info.plist */,
+				5BD93E3227B0E25000F0C9B9 /* GoogleService-Info.plist */,
 			);
 			path = FoodApp;
 			sourceTree = "<group>";
@@ -103,6 +112,7 @@
 			children = (
 				5BD93DFF27AB7F3D00F0C9B9 /* Main.storyboard */,
 				5BD93E0427AB7F3F00F0C9B9 /* LaunchScreen.storyboard */,
+				5BD93E3627B101C500F0C9B9 /* Home.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,6 +124,7 @@
 				5BD93DF927AB7F3D00F0C9B9 /* AppDelegate.swift */,
 				5BD93DFB27AB7F3D00F0C9B9 /* SceneDelegate.swift */,
 				5BD93DFD27AB7F3D00F0C9B9 /* SplashVC.swift */,
+				5BD93E3827B1078000F0C9B9 /* HomeVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -169,6 +180,7 @@
 			children = (
 				5BD93E1B27ABFC6B00F0C9B9 /* UITextFieldPaddingExtension.swift */,
 				5BD93E2327AE598300F0C9B9 /* SizeExtension.swift */,
+				5BD93E3427B0F90200F0C9B9 /* CoderExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -193,7 +205,7 @@
 				5BD93DF227AB7F3D00F0C9B9 /* Sources */,
 				5BD93DF327AB7F3D00F0C9B9 /* Frameworks */,
 				5BD93DF427AB7F3D00F0C9B9 /* Resources */,
-				60A1AFB0B310C0E9FDBCEEE1 /* [CP] Embed Pods Frameworks */,
+				55C01F35E03275AF28ACC075 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -243,6 +255,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD93E0627AB7F3F00F0C9B9 /* LaunchScreen.storyboard in Resources */,
+				5BD93E3727B101C500F0C9B9 /* Home.storyboard in Resources */,
+				5BD93E3327B0E25000F0C9B9 /* GoogleService-Info.plist in Resources */,
 				5BD93E0327AB7F3F00F0C9B9 /* Assets.xcassets in Resources */,
 				5BD93E0127AB7F3D00F0C9B9 /* Main.storyboard in Resources */,
 			);
@@ -251,7 +265,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		60A1AFB0B310C0E9FDBCEEE1 /* [CP] Embed Pods Frameworks */ = {
+		55C01F35E03275AF28ACC075 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -298,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD93E2427AE598300F0C9B9 /* SizeExtension.swift in Sources */,
+				5BD93E3927B1078000F0C9B9 /* HomeVC.swift in Sources */,
 				5BD93E1A27ABCEAC00F0C9B9 /* LocationVC.swift in Sources */,
 				5BD93DFE27AB7F3D00F0C9B9 /* SplashVC.swift in Sources */,
 				5BD93E1227AB816200F0C9B9 /* IntroVC.swift in Sources */,
@@ -305,6 +320,7 @@
 				5BD93DFA27AB7F3D00F0C9B9 /* AppDelegate.swift in Sources */,
 				5BD93E1727AB9AC400F0C9B9 /* RegisterVC.swift in Sources */,
 				5BD93E1C27ABFC6B00F0C9B9 /* UITextFieldPaddingExtension.swift in Sources */,
+				5BD93E3527B0F90200F0C9B9 /* CoderExtension.swift in Sources */,
 				5BD93DFC27AB7F3D00F0C9B9 /* SceneDelegate.swift in Sources */,
 				5BD93E1E27ACEE3700F0C9B9 /* UserModel.swift in Sources */,
 				5BD93E2727AE74BA00F0C9B9 /* LocationSearchVC.swift in Sources */,

@@ -22,7 +22,7 @@ class LocationVC: UIViewController {
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 30000
-    var userAddress = Address()
+    var userInfo = UserInfo()
     var addressLabelText = ""
     
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ class LocationVC: UIViewController {
     }
     
     @IBAction func confirmAddressAction(_ sender: Any) {
-        selectionDelegate.passLocation(userAddress: userAddress)
+        selectionDelegate.passLocation(userInfo: userInfo)
         navigationController?.popViewController(animated: true)
     }
     
@@ -45,7 +45,7 @@ class LocationVC: UIViewController {
 }
 
 protocol PassLocationDelegate {
-    func passLocation (userAddress: Address)
+    func passLocation (userInfo: UserInfo)
 }
 
 extension LocationVC{
@@ -112,12 +112,6 @@ extension LocationVC{
         }
     }
     
-    func getCenterLocation(for mapView: MKMapView) -> CLLocation{
-        let latitude = map.centerCoordinate.latitude
-        let longitude = map.centerCoordinate.longitude
-        return CLLocation(latitude: latitude, longitude: longitude)
-    }
-    
     func getAddress(){
         let center = getCenterLocation(for: map)
         let geoCoder = CLGeocoder()
@@ -125,9 +119,15 @@ extension LocationVC{
         setGeoCoder(geoCoder, center)
     }
     
+    func getCenterLocation(for mapView: MKMapView) -> CLLocation{
+        let latitude = map.centerCoordinate.latitude
+        let longitude = map.centerCoordinate.longitude
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
     fileprivate func setUserAddressCoordinates(_ center: CLLocation) {
-        userAddress.longitude = center.coordinate.longitude
-        userAddress.latitude = center.coordinate.latitude
+        userInfo.longitude = center.coordinate.longitude
+        userInfo.latitude = center.coordinate.latitude
     }
     
     fileprivate func setGeoCoder(_ geoCoder: CLGeocoder, _ center: CLLocation) {
@@ -147,13 +147,13 @@ extension LocationVC{
     
     fileprivate func setUserAddress(_ self: LocationVC, _ placemark: CLPlacemark) {
         DispatchQueue.main.async {
-            self.userAddress.streetNumber = placemark.subThoroughfare ?? ""
-            self.userAddress.streetName = placemark.thoroughfare ?? ""
-            self.userAddress.district = placemark.subLocality ?? ""
-            self.userAddress.city = placemark.locality ?? ""
-            self.userAddress.postalCode = placemark.postalCode ?? ""
-            self.addressLabelText = "\(self.userAddress.streetNumber) \(self.userAddress.streetName), \(self.userAddress.district) \(self.userAddress.city)"
-            self.address.text = "\(self.userAddress.streetNumber) \(self.userAddress.streetName), \(self.userAddress.district) \(self.userAddress.city)"
+            self.userInfo.streetNumber = placemark.subThoroughfare ?? ""
+            self.userInfo.streetName = placemark.thoroughfare ?? ""
+            self.userInfo.district = placemark.subLocality ?? ""
+            self.userInfo.city = placemark.locality ?? ""
+            self.userInfo.postalCode = placemark.postalCode ?? ""
+            self.addressLabelText = "\(self.userInfo.streetNumber) \(self.userInfo.streetName), \(self.userInfo.district) \(self.userInfo.city)"
+            self.address.text = "\(self.userInfo.streetNumber) \(self.userInfo.streetName), \(self.userInfo.district) \(self.userInfo.city)"
         }
     }
 }

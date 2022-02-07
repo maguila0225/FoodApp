@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LocationSearchVC: UIViewController {
+class LocationSearchVC: UIViewController{
 
     @IBOutlet weak var confirmAddressButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
@@ -42,8 +42,23 @@ class LocationSearchVC: UIViewController {
     
 }
 
+extension LocationSearchVC: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = searchTableView.dequeueReusableCell(withIdentifier: "cell")
+        cell!.textLabel?.text = "Test"
+        return cell!
+    }
+}
+
+
 extension LocationSearchVC{
     func setupView() {
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
         view.layer.cornerRadius = 20
         searchTextField.setLeftPaddingPoints(30)
         searchTextField.textAlignment = .left
@@ -57,3 +72,5 @@ extension LocationSearchVC{
         searchTextField.addSubview(searchBarImage)
     }
 }
+
+
