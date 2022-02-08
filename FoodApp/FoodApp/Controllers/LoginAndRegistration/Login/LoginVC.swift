@@ -14,6 +14,8 @@ class LoginVC: UIViewController{
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    var errorMessage = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -23,38 +25,48 @@ class LoginVC: UIViewController{
     @IBAction func loginAction(_ sender: Any) {
         signInWithFirebase(email: usernameTextField.text!, password: passwordTextField.text!)
     }
-    
-}
-
-extension LoginVC{
-    func signInWithFirebase(email: String, password: String){
-        print("username: \(usernameTextField.text!)")
-        print("password: \(passwordTextField.text!)")
-        Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { [weak self] authResult, error in
-          guard let strongSelf = self else { return }
-            if let error = error{
-                print(error.localizedDescription)
-                return
-            }
-            self!.checkUserID()
-            let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-            self!.navigationController!.pushViewController(vc, animated: true)
-        }
-    }
-    
-    func checkUserID(){
-        if Auth.auth().currentUser != nil{
-            print("User Signed In \n uid: \(Auth.auth().currentUser!.uid) \n email: \(Auth.auth().currentUser!.email!)")
-            UserDefaults.standard.set(true, forKey: "foodAppIsSignedIn")
-            UserDefaults.standard.synchronize()
-        }
-    }
 }
 
 extension LoginVC{
     // MARK: - Setup View
     func setupView(){
         loginButton.layer.cornerRadius = 10
+    }
+    
+    //MARK: - Page Reset
+    func pageReset(){
+        loginButton.isUserInteractionEnabled = false
+        loginButton.backgroundColor = .systemGray4
+        usernameTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
+    //MARK: - Sign In Functions
+    func signInWithFirebase(email: String, password: String){
+        Auth.auth().signIn(withEmail: usernameTextField.text!, password: passwordTextField.text!) { [weak self] authResult, error in
+            guard self != nil else { return }
+            if let error = error{
+                self!.errorMessage = error.localizedDescription
+                self!.showAlert(title: "Sign In Failed", message: self!.errorMessage)
+                return
+            }
+            self!.signInUser()
+        }
+    }
+    
+    func signInUser(){
+        print("User Signed In \n uid: \(Auth.auth().currentUser!.uid) \n email: \(Auth.auth().currentUser!.email!)")
+        updateUserDefaults()
+        popToSplashVC()
+    }
+    
+    fileprivate func updateUserDefaults(){
+        UserDefaults.standard.set(true, forKey: "foodAppIsSignedIn")
+        UserDefaults.standard.synchronize()
+    }
+    
+    fileprivate func popToSplashVC(){
+        self.navigationController!.popToRootViewController(animated: true)
     }
     
     // MARK: - Text Field Verification
@@ -74,13 +86,5 @@ extension LoginVC{
             loginButton.isUserInteractionEnabled = true
             loginButton.backgroundColor = .systemGreen
         }
-    }
-    
-    //MARK: - Page Reset
-    func pageReset(){
-        loginButton.isUserInteractionEnabled = false
-        loginButton.backgroundColor = .systemGray4
-        usernameTextField.text = ""
-        passwordTextField.text = ""
     }
 }

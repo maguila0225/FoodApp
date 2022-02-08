@@ -19,7 +19,6 @@ class LocationVC: UIViewController {
     let searchBarImage = UIImageView()
     
     var selectionDelegate: PassLocationDelegate!
-    
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 30000
     var userInfo = UserInfo()
@@ -34,18 +33,12 @@ class LocationVC: UIViewController {
     
     @IBAction func confirmAddressAction(_ sender: Any) {
         selectionDelegate.passLocation(userInfo: userInfo)
-        navigationController?.popViewController(animated: true)
+        popToRegisterVC()
     }
     
     @IBAction func searchFieldTouched(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "LocationSearchVC") as! LocationSearchVC
-        vc.addressLabelText = addressLabelText
-        present(vc, animated: true, completion: nil)
+        pushToLocationSearchVC()
     }
-}
-
-protocol PassLocationDelegate {
-    func passLocation (userInfo: UserInfo)
 }
 
 extension LocationVC{
@@ -104,7 +97,6 @@ extension LocationVC{
     }
     
     //MARK: - Get User Location from Map
-    
     func centerViewOnUserLocation(){
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
@@ -156,6 +148,16 @@ extension LocationVC{
             self.address.text = "\(self.userInfo.streetNumber) \(self.userInfo.streetName), \(self.userInfo.district) \(self.userInfo.city)"
         }
     }
+    //MARK: - Screen Transition
+    func popToRegisterVC(){
+        navigationController?.popViewController(animated: true)
+    }
+    func pushToLocationSearchVC(){
+        let vc = storyboard?.instantiateViewController(withIdentifier: "LocationSearchVC") as! LocationSearchVC
+        vc.addressLabelText = addressLabelText
+        present(vc, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - Location Manager Delegate
@@ -164,4 +166,9 @@ extension LocationVC: CLLocationManagerDelegate{
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         checkLocationAuthorization()
     }
+}
+
+// MARK: - Pass Data Delegate
+protocol PassLocationDelegate {
+    func passLocation (userInfo: UserInfo)
 }

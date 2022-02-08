@@ -26,8 +26,9 @@ class HomeVC: UIViewController {
             print("Error signing out: %@", signOutError)
         }
     }
+    
     func backToIntro(){
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IntroVC") as! IntroVC
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
 }
+

@@ -25,7 +25,7 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     
     var userInfo = UserInfo()
-    
+    var errorMessage = ""
     let firestoreDatabase = Firestore.firestore()
 
     override func viewDidLoad() {
@@ -38,55 +38,20 @@ class RegisterVC: UIViewController {
     }
     
     @IBAction func locationButtonTapped(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LocationVC") as! LocationVC
-        vc.selectionDelegate = self
-        navigationController?.pushViewController(vc, animated: true)
+        pushLocationVC()
     }
     
     @IBAction func registerAction(_ sender: Any) {
-        
         guard password.text == passwordConfirmation.text else {
-            NSLog("mismatch Password")
+            showAlert(title: "Registration Failed", message: "The password you entered does not match the password confirmation")
             return
         }
         updateUserInfo()
     }
-    
 }
 
 extension RegisterVC{
-    func updateUserInfo(){
-        userInfo.firstName = self.firstName.text!
-        userInfo.lastName = self.lastName.text!
-        userInfo.email = self.email.text!
-        userInfo.houseNumber = self.houseNumber.text ?? ""
-        encodeData()
-    }
-    
-    fileprivate func encodeData(){
-        let encodedUser = encodeInfo(inputUser: userInfo)
-        
-        registerWithFirebase(encodedUser)
-    }
-    
-    fileprivate func registerWithFirebase(_ encodedUser: [String : Any]) {
-        Auth.auth().createUser(withEmail: email.text!, password: password.text!, completion: { result, error in
-            if error != nil{
-                NSLog("\(String(describing: error))")
-            }
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            print("uid: \(Auth.auth().currentUser!.uid)")
-            print("email: \(self.email.text!)")
-            print("password \(self.password.text!)")
-            let docRef = self.firestoreDatabase.collection("UserInfo").document(uid)
-            docRef.setData(encodedUser)
-        })
-    }
-
-}
-
-extension RegisterVC{
-    // MARK: Setup View
+    // MARK: - Setup View
     func setupView() {
         registerButton.isUserInteractionEnabled = false
         registerButton.backgroundColor = .systemGray4
@@ -100,6 +65,56 @@ extension RegisterVC{
         registerButton.layer.cornerRadius = 10
     }
     
+    // MARK: - Fill in User Address
+    func fillInAddress(){
+        street.text = userInfo.streetNumber + userInfo.streetName
+        district.text = userInfo.district
+        city.text = userInfo.city
+        postalCode.text = userInfo.postalCode
+    }
+    
+    //MARK: - Registration with Firebase
+    func updateUserInfo(){
+        userInfo.firstName = self.firstName.text!
+        userInfo.lastName = self.lastName.text!
+        userInfo.email = self.email.text!
+        userInfo.houseNumber = self.houseNumber.text ?? ""
+        encodeData()
+    }
+    
+    fileprivate func encodeData(){
+        let encodedUser = encodeInfo(inputUser: userInfo)
+        registerWithFirebase(encodedUser)
+    }
+    
+    fileprivate func registerWithFirebase(_ encodedUser: [String : Any]) {
+        Auth.auth().createUser(withEmail: email.text!, password: password.text!, completion: { [self] result, error in
+            if error != nil{
+                self.errorMessage = error!.localizedDescription
+                showAlert(title: "Registration Failed", message: self.errorMessage )
+                return
+            }
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            let docRef = self.firestoreDatabase.collection("UserInfo").document(uid)
+            docRef.setData(encodedUser)
+            pushLoginVC()
+        })
+    }
+    
+    //MARK: - Screen Transition Functions
+    func pushLocationVC(){
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LocationVC") as! LocationVC
+        vc.selectionDelegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func pushLoginVC(){
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension RegisterVC{
     //MARK: - Text Field Verification
     @IBAction func firstNameChange(_ sender: Any) {
         textfieldVerification()
@@ -157,28 +172,6 @@ extension RegisterVC{
             registerButton.isUserInteractionEnabled = true
             registerButton.backgroundColor = .systemGreen
         }
-    }
-    
-    // MARK: - Fill in User Address
-    func fillInAddress(){
-        street.text = userInfo.streetNumber + userInfo.streetName
-        district.text = userInfo.district
-        city.text = userInfo.city
-        postalCode.text = userInfo.postalCode
-    }
-    
-    // MARK: - Page Reset
-    func pageReset(){
-        firstName.text = ""
-        lastName.text = ""
-        email.text = ""
-        houseNumber.text = ""
-        street.text = ""
-        district.text = ""
-        postalCode.text = ""
-        city.text = ""
-        password.text = ""
-        passwordConfirmation.text = ""
     }
 }
 
