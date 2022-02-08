@@ -184,6 +184,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Add Photo"/>
+                                                <connections>
+                                                    <action selector="addPhotoButtonTapped:" destination="oox-ZD-cwM" eventType="touchUpInside" id="Pid-MJ-O1a"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mSh-RK-qQw">
                                                 <rect key="frame" x="130" y="154.5" width="245" height="165"/>

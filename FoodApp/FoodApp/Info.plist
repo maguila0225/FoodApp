@@ -4,6 +4,10 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please provide location permission to this app to accurately get your current address</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allow access to the camera to take a photo for your profile</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to the photo library to select your profile picture</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
