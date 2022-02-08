@@ -47,11 +47,25 @@ extension LoginVC{
             guard self != nil else { return }
             if let error = error{
                 self!.errorMessage = error.localizedDescription
-                self!.showAlert(title: "Sign In Failed", message: self!.errorMessage)
+                if error._code == 17011{
+                    self!.signUpAlert()
+                }
+                else{
+                    self!.showAlert(title: "Sign In Failed", message: self!.errorMessage)
+                }
                 return
             }
             self!.signInUser()
         }
+    }
+    
+    fileprivate func signUpAlert() {
+        let alert = UIAlertController(title: "Sign In Failed", message: "The email you have entered is not registered, would you like to sign up?", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Sign Up", style: UIAlertAction.Style.default, handler: { _ in
+            self.pushToRegisterVC()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func signInUser(){
@@ -64,9 +78,14 @@ extension LoginVC{
         UserDefaults.standard.set(true, forKey: "foodAppIsSignedIn")
         UserDefaults.standard.synchronize()
     }
-    
+    // MARK: - Screen Transition Functions
     fileprivate func popToSplashVC(){
         self.navigationController!.popToRootViewController(animated: true)
+    }
+    
+    fileprivate func pushToRegisterVC(){
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+        self.navigationController!.pushViewController(vc, animated: true)
     }
     
     // MARK: - Text Field Verification
