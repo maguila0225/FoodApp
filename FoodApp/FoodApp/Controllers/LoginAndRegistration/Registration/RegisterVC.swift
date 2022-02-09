@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 class RegisterVC: UIViewController {
     
@@ -27,6 +28,8 @@ class RegisterVC: UIViewController {
     var userInfo = UserInfo()
     var errorMessage = ""
     let firestoreDatabase = Firestore.firestore()
+    private let storage = Storage.storage().reference()
+    var firebaseImageData = UIImage().pngData()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +59,7 @@ class RegisterVC: UIViewController {
 extension RegisterVC{
     // MARK: - Setup View
     func setupView() {
+        navigationController?.navigationBar.prefersLargeTitles = false
         registerButton.isUserInteractionEnabled = false
         registerButton.backgroundColor = .systemGray4
         setupUI()
@@ -100,6 +104,7 @@ extension RegisterVC{
             guard let uid = Auth.auth().currentUser?.uid else { return }
             let docRef = self.firestoreDatabase.collection("UserInfo").document(uid)
             docRef.setData(encodedUser)
+            uploadImageData(uid: uid)
             pushLoginVC()
         })
     }
@@ -117,48 +122,20 @@ extension RegisterVC{
     }
 }
 
+//MARK: - Text Field Verification
 extension RegisterVC{
-    //MARK: - Text Field Verification
-    @IBAction func firstNameChange(_ sender: Any) {
-        textfieldVerification()
-    }
-    @IBAction func lastNameChange(_ sender: Any) {
-        textfieldVerification()
-    }
+    @IBAction func firstNameChange(_ sender: Any) { textfieldVerification() }
+    @IBAction func lastNameChange(_ sender: Any) { textfieldVerification() }
+    @IBAction func emailChange(_ sender: Any) { textfieldVerification() }
+    @IBAction func houseChange(_ sender: Any) { textfieldVerification() }
+    @IBAction func streetChange(_ sender: Any) { textfieldVerification() }
+    @IBAction func postalCodeChange(_ sender: Any) { textfieldVerification() }
+    @IBAction func districtChange(_ sender: Any) { textfieldVerification() }
+    @IBAction func cityChange(_ sender: Any) { textfieldVerification() }
+    @IBAction func passwordChange(_ sender: Any) { textfieldVerification() }
+    @IBAction func confirmPasswordChange(_ sender: Any) { textfieldVerification() }
     
-    @IBAction func emailChange(_ sender: Any) {
-        textfieldVerification()
-    }
-    
-    @IBAction func houseChange(_ sender: Any) {
-        textfieldVerification()
-    }
-    
-    @IBAction func streetChange(_ sender: Any) {
-        textfieldVerification()
-    }
-    
-    @IBAction func postalCodeChange(_ sender: Any) {
-        textfieldVerification()
-    }
-    
-    @IBAction func districtChange(_ sender: Any) {
-        textfieldVerification()
-    }
-    
-    @IBAction func cityChange(_ sender: Any) {
-        textfieldVerification()
-    }
-    
-    @IBAction func passwordChange(_ sender: Any) {
-        textfieldVerification()
-    }
-    
-    @IBAction func confirmPasswordChange(_ sender: Any) {
-        textfieldVerification()
-    }
-    
-    func textfieldVerification(){
+    fileprivate func textfieldVerification(){
         if (firstName.text == "" ||
             lastName.text == "" ||
             email.text == "" ||
@@ -185,8 +162,9 @@ extension RegisterVC: PassLocationDelegate{
     }
 }
 
+// MARK: - Photo Selection and Upload
 extension RegisterVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+
     func presentPhotoActionSheet(){
         let actionSheet = UIAlertController(title: "Profile Picture",
                                             message: "How would you like to select a picure",
@@ -201,7 +179,7 @@ extension RegisterVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         present(actionSheet, animated: true)
     }
     
-    func presentCamera(){
+    fileprivate func presentCamera(){
         let vc = UIImagePickerController()
         vc.sourceType = .camera
         vc.delegate = self
@@ -209,7 +187,7 @@ extension RegisterVC: UIImagePickerControllerDelegate, UINavigationControllerDel
         present(vc, animated: true)
     }
     
-    func presentPhotoPicker(){
+    fileprivate func presentPhotoPicker(){
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
         vc.delegate = self
@@ -220,10 +198,24 @@ extension RegisterVC: UIImagePickerControllerDelegate, UINavigationControllerDel
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
+        guard let imageData = selectedImage.pngData().self else { return }
+        self.firebaseImageData = imageData
         self.personImage.image = selectedImage
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadImageData(uid: String){
+        let reference = "profilePictures/\(uid).png"
+        guard firebaseImageData != nil else {
+            print("No Profile Picture Selected")
+            return }
+        storage.child(reference).putData(self.firebaseImageData!,metadata: nil) { _, error in
+            guard error == nil else {
+                NSLog(error!.localizedDescription)
+                return }
+        }
     }
 }

@@ -30,6 +30,7 @@ class LoginVC: UIViewController{
 extension LoginVC{
     // MARK: - Setup View
     func setupView(){
+        navigationController?.navigationBar.prefersLargeTitles = false
         loginButton.layer.cornerRadius = 10
     }
     

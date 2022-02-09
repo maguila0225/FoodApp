@@ -27,6 +27,11 @@
 		5BD93E3727B101C500F0C9B9 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E3627B101C500F0C9B9 /* Home.storyboard */; };
 		5BD93E3C27B206D000F0C9B9 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E3B27B206D000F0C9B9 /* HomeVC.swift */; };
 		5BD93E3E27B20EF800F0C9B9 /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E3D27B20EF800F0C9B9 /* AlertExtension.swift */; };
+		5BD93E4227B35D9600F0C9B9 /* HomeTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E4127B35D9600F0C9B9 /* HomeTabBarVC.swift */; };
+		5BD93E4827B361DA00F0C9B9 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E4727B361DA00F0C9B9 /* ChatVC.swift */; };
+		5BD93E4A27B361EB00F0C9B9 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E4927B361EB00F0C9B9 /* MapVC.swift */; };
+		5BD93E4C27B3620A00F0C9B9 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E4B27B3620A00F0C9B9 /* AccountVC.swift */; };
+		5BD93E4F27B37D2000F0C9B9 /* MainNavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E4E27B37D2000F0C9B9 /* MainNavVC.swift */; };
 		C45BA2B4CE43D5C812B77C48 /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +58,11 @@
 		5BD93E3627B101C500F0C9B9 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		5BD93E3B27B206D000F0C9B9 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		5BD93E3D27B20EF800F0C9B9 /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
+		5BD93E4127B35D9600F0C9B9 /* HomeTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarVC.swift; sourceTree = "<group>"; };
+		5BD93E4727B361DA00F0C9B9 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		5BD93E4927B361EB00F0C9B9 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		5BD93E4B27B3620A00F0C9B9 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		5BD93E4E27B37D2000F0C9B9 /* MainNavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavVC.swift; sourceTree = "<group>"; };
 		820E126AFFDF64B3801479B1 /* Pods-FoodApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.release.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.release.xcconfig"; sourceTree = "<group>"; };
 		EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FC71A318EEB9C9AAAB0A7C /* Pods-FoodApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,7 +136,6 @@
 				5BD93E1327AB81C900F0C9B9 /* LoginAndRegistration */,
 				5BD93DF927AB7F3D00F0C9B9 /* AppDelegate.swift */,
 				5BD93DFB27AB7F3D00F0C9B9 /* SceneDelegate.swift */,
-				5BD93DFD27AB7F3D00F0C9B9 /* SplashVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -152,6 +161,7 @@
 		5BD93E1327AB81C900F0C9B9 /* LoginAndRegistration */ = {
 			isa = PBXGroup;
 			children = (
+				5BD93E4D27B37CE500F0C9B9 /* Splash */,
 				5BD93E2027AE3BFB00F0C9B9 /* Registration */,
 				5BD93E1F27AE3BF400F0C9B9 /* Login */,
 			);
@@ -191,9 +201,54 @@
 		5BD93E3A27B2064100F0C9B9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				5BD93E3B27B206D000F0C9B9 /* HomeVC.swift */,
+				5BD93E4327B3617200F0C9B9 /* Meals */,
+				5BD93E4427B361B600F0C9B9 /* Chat */,
+				5BD93E4527B361BE00F0C9B9 /* Map */,
+				5BD93E4627B361C500F0C9B9 /* Account */,
+				5BD93E4127B35D9600F0C9B9 /* HomeTabBarVC.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		5BD93E4327B3617200F0C9B9 /* Meals */ = {
+			isa = PBXGroup;
+			children = (
+				5BD93E3B27B206D000F0C9B9 /* HomeVC.swift */,
+			);
+			path = Meals;
+			sourceTree = "<group>";
+		};
+		5BD93E4427B361B600F0C9B9 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5BD93E4727B361DA00F0C9B9 /* ChatVC.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		5BD93E4527B361BE00F0C9B9 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				5BD93E4927B361EB00F0C9B9 /* MapVC.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		5BD93E4627B361C500F0C9B9 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				5BD93E4B27B3620A00F0C9B9 /* AccountVC.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		5BD93E4D27B37CE500F0C9B9 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				5BD93DFD27AB7F3D00F0C9B9 /* SplashVC.swift */,
+				5BD93E4E27B37D2000F0C9B9 /* MainNavVC.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		80A66F50BC7E9A61BE7AB693 /* Pods */ = {
@@ -329,12 +384,17 @@
 				5BD93E2927AFEC4000F0C9B9 /* LocationModel.swift in Sources */,
 				5BD93E3C27B206D000F0C9B9 /* HomeVC.swift in Sources */,
 				5BD93DFA27AB7F3D00F0C9B9 /* AppDelegate.swift in Sources */,
+				5BD93E4A27B361EB00F0C9B9 /* MapVC.swift in Sources */,
+				5BD93E4827B361DA00F0C9B9 /* ChatVC.swift in Sources */,
 				5BD93E1727AB9AC400F0C9B9 /* RegisterVC.swift in Sources */,
 				5BD93E1C27ABFC6B00F0C9B9 /* UITextFieldPaddingExtension.swift in Sources */,
 				5BD93E3527B0F90200F0C9B9 /* CoderExtension.swift in Sources */,
 				5BD93E3E27B20EF800F0C9B9 /* AlertExtension.swift in Sources */,
+				5BD93E4C27B3620A00F0C9B9 /* AccountVC.swift in Sources */,
+				5BD93E4227B35D9600F0C9B9 /* HomeTabBarVC.swift in Sources */,
 				5BD93DFC27AB7F3D00F0C9B9 /* SceneDelegate.swift in Sources */,
 				5BD93E1E27ACEE3700F0C9B9 /* UserModel.swift in Sources */,
+				5BD93E4F27B37D2000F0C9B9 /* MainNavVC.swift in Sources */,
 				5BD93E2727AE74BA00F0C9B9 /* LocationSearchVC.swift in Sources */,
 				5BD93E1527AB8C4D00F0C9B9 /* LoginVC.swift in Sources */,
 			);

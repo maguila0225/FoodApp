@@ -44,6 +44,7 @@ class LocationVC: UIViewController {
 extension LocationVC{
     // MARK: - Setup View
     func setupView(){
+        navigationController?.navigationBar.prefersLargeTitles = false
         confirmAddressButton.layer.cornerRadius = 10
         backgroundView.layer.cornerRadius = 20
         searchBar.setLeftPaddingPoints(30)

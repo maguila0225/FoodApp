@@ -1114,30 +1114,10 @@
             </objects>
             <point key="canvasLocation" x="1702" y="1122"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="DqE-OS-uFA">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Rt-JT-zzw" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="812"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XoI-Gf-pdT">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="COR-JM-Wru" kind="relationship" relationship="rootViewController" id="XFP-aJ-lcP"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vb4-ws-2cW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="14" y="704"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--Main NavVC-->
         <scene sceneID="DQf-pf-oFR">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PlX-EM-UvG" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavVC" automaticallyAdjustsScrollViewInsets="NO" id="PlX-EM-UvG" customClass="MainNavVC" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cWX-h4-oOl">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
