@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home Tab BarVC-->
+        <scene sceneID="VvE-Wj-hKx">
+            <objects>
+                <tabBarController storyboardIdentifier="HomeTabBarVC" automaticallyAdjustsScrollViewInsets="NO" id="sQZ-82-DDg" customClass="HomeTabBarVC" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="FC8-01-5sm">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="oNp-3h-RrR" kind="relationship" relationship="viewControllers" id="wVa-C0-N4D"/>
+                        <segue destination="7rE-BH-GXZ" kind="relationship" relationship="viewControllers" id="sn0-pC-Hkr"/>
+                        <segue destination="BAl-gI-Xrw" kind="relationship" relationship="viewControllers" id="iiq-wY-bhF"/>
+                        <segue destination="6tH-sJ-wkE" kind="relationship" relationship="viewControllers" id="WeZ-H7-a3x"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LXw-4M-VLL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160.86956521739131" y="15.401785714285714"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="3bO-vO-1Yg">
+            <objects>
+                <viewController storyboardIdentifier="AccountVC" id="bWX-SG-GUB" customClass="AccountVC" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J1u-zC-icp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="675"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wC5-r8-bTb">
+                                <rect key="frame" x="16" y="312.5" width="343" height="50"/>
+                                <color key="backgroundColor" red="0.46955275540000002" green="0.71099728350000002" blue="0.27832230930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4hI-Kt-Bhy"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Out">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="signOut:" destination="bWX-SG-GUB" eventType="touchUpInside" id="Gk4-Ha-CIg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hXs-bN-yv2"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wC5-r8-bTb" firstAttribute="leading" secondItem="hXs-bN-yv2" secondAttribute="leading" constant="16" id="hfs-bF-9RJ"/>
+                            <constraint firstItem="hXs-bN-yv2" firstAttribute="trailing" secondItem="wC5-r8-bTb" secondAttribute="trailing" constant="16" id="nnN-Vr-Rn3"/>
+                            <constraint firstItem="wC5-r8-bTb" firstAttribute="centerY" secondItem="J1u-zC-icp" secondAttribute="centerY" id="tkv-1o-7AA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Account" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="H1f-65-wT0"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="812"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3dq-ij-BGv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1857" y="1509"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="XDp-Fx-ArW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6tH-sJ-wkE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Account" image="person.circle.fill" catalog="system" id="G8n-IW-YsM"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AhL-KS-7Pt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bWX-SG-GUB" kind="relationship" relationship="rootViewController" id="5Ph-iG-nao"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dog-Q4-dxz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1856.521739130435" y="782.8125"/>
+        </scene>
+        <!--UINavigationController-7yi-Fg-tqk-->
+        <scene sceneID="zOZ-Y8-TaM">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Meals" referencedIdentifier="UINavigationController-7yi-Fg-tqk" id="oNp-3h-RrR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="fpl-CB-UPI"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="smL-Zp-8N2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1312" y="171"/>
+        </scene>
+        <!--UINavigationController-L83-Tt-CK5-->
+        <scene sceneID="2c3-w4-em7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chat" referencedIdentifier="UINavigationController-L83-Tt-CK5" id="7rE-BH-GXZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="9j4-ou-9w2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gJX-cP-aKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-555" y="783"/>
+        </scene>
+        <!--UINavigationController-RPP-kC-Z3s-->
+        <scene sceneID="apb-sJ-VM4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" referencedIdentifier="UINavigationController-RPP-kC-Z3s" id="BAl-gI-Xrw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="VRi-tC-hPM"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kkf-fh-E45" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="839" y="783"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.46955275540000002" green="0.71099728350000002" blue="0.27832230930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+    <resources>
+        <image name="person.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

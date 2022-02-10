@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 extension UIViewController{
+    
     func encodeInfo(inputUser: UserInfo) -> [String: Any]
     {
         do{
@@ -24,5 +25,4 @@ extension UIViewController{
             return [:]
         }
     }
-    
 }
