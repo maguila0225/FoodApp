@@ -24,3 +24,13 @@ struct CategoryDetail: Codable{
     let strCategoryThumb: String
     let strCategoryDescription: String
 }
+
+struct Meals: Codable{
+    let meals: [MealDetail]
+}
+
+struct MealDetail: Codable{
+    let strMeal: String
+    let strMealThumb: String
+    let idMeal: String
+}

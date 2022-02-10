@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MealsCell" id="gTV-IL-0wX" customClass="MealsCell" customModule="FoodApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="160" height="272"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="160" height="272"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfX-qU-sGa">
+                        <rect key="frame" x="-1.5" y="0.0" width="163" height="272"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v6j-2W-KPI">
+                                <rect key="frame" x="0.0" y="0.0" width="163" height="204"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="204" id="mmg-Ah-2Qx"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MealName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFt-Fl-Bex">
+                                <rect key="frame" x="16" y="216.5" width="88" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="FJM-UA-cmc"/>
+                                    <constraint firstAttribute="width" constant="88" id="S63-9Y-Ra2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGw-hN-ABX">
+                                <rect key="frame" x="119" y="218.5" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.46955275540000002" green="0.71099728350000002" blue="0.27832230930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30.210000000000001" id="br9-KK-dRn"/>
+                                    <constraint firstAttribute="height" constant="30.210000000000001" id="vEJ-tk-RUT"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow.up.right.square" catalog="system"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xGw-hN-ABX" secondAttribute="trailing" constant="14" id="6sC-0b-24k"/>
+                            <constraint firstAttribute="width" constant="163.13" id="9D4-4p-Nqw"/>
+                            <constraint firstItem="v6j-2W-KPI" firstAttribute="top" secondItem="cfX-qU-sGa" secondAttribute="top" id="ARt-mF-8o6"/>
+                            <constraint firstItem="UFt-Fl-Bex" firstAttribute="top" secondItem="v6j-2W-KPI" secondAttribute="bottom" constant="12.529999999999999" id="LVb-YQ-uo2"/>
+                            <constraint firstAttribute="trailing" secondItem="v6j-2W-KPI" secondAttribute="trailing" id="LXl-1e-mwh"/>
+                            <constraint firstAttribute="height" constant="272" id="ObZ-iQ-VKR"/>
+                            <constraint firstItem="xGw-hN-ABX" firstAttribute="centerY" secondItem="UFt-Fl-Bex" secondAttribute="centerY" id="lWB-9p-HB8"/>
+                            <constraint firstItem="v6j-2W-KPI" firstAttribute="leading" secondItem="cfX-qU-sGa" secondAttribute="leading" id="sSz-by-KVg"/>
+                            <constraint firstItem="UFt-Fl-Bex" firstAttribute="leading" secondItem="cfX-qU-sGa" secondAttribute="leading" constant="16" id="v3Q-S8-qeg"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="cfX-qU-sGa" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="kj3-zr-JTx"/>
+                <constraint firstItem="cfX-qU-sGa" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="tZJ-LC-zjH"/>
+            </constraints>
+            <size key="customSize" width="160" height="272"/>
+            <connections>
+                <outlet property="mealCellBackground" destination="cfX-qU-sGa" id="0HF-Mi-wFA"/>
+                <outlet property="mealCellButton" destination="xGw-hN-ABX" id="h8W-56-xkT"/>
+                <outlet property="mealCellImage" destination="v6j-2W-KPI" id="QbW-Ha-tW9"/>
+                <outlet property="mealCellLabel" destination="UFt-Fl-Bex" id="rf9-q2-2M9"/>
+            </connections>
+            <point key="canvasLocation" x="202.89855072463769" y="116.51785714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="arrow.up.right.square" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

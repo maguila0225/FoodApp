@@ -84,6 +84,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kkh-Vg-5hq" userLabel="Meals Collection View">
+                                <rect key="frame" x="16" y="185.5" width="343" height="538.5"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kqy-Rz-KRd">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CXp-SY-s2x">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OYP-c1-Lh9">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -91,11 +111,15 @@
                             <constraint firstItem="13p-OV-Yzd" firstAttribute="centerY" secondItem="NCH-vd-bRs" secondAttribute="centerY" id="6w9-p4-ajZ"/>
                             <constraint firstItem="NCH-vd-bRs" firstAttribute="top" secondItem="FWs-1H-gzb" secondAttribute="bottom" constant="26.5" id="7dn-N5-eeu"/>
                             <constraint firstItem="mmJ-Rs-7EI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Azv-yg-ZxT"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kkh-Vg-5hq" secondAttribute="bottom" id="KS6-kb-jhf"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mmJ-Rs-7EI" secondAttribute="trailing" id="TyW-N2-Mdb"/>
                             <constraint firstItem="FWs-1H-gzb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="br7-56-llU"/>
+                            <constraint firstItem="kkh-Vg-5hq" firstAttribute="top" secondItem="mmJ-Rs-7EI" secondAttribute="bottom" constant="25" id="cJn-nm-eAJ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FWs-1H-gzb" secondAttribute="trailing" constant="16" id="duC-CP-ak9"/>
                             <constraint firstItem="FWs-1H-gzb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="6" id="jSj-W9-7Wu"/>
+                            <constraint firstItem="kkh-Vg-5hq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="mQR-dQ-7zp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="13p-OV-Yzd" secondAttribute="trailing" constant="3" id="o6h-lK-YAO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kkh-Vg-5hq" secondAttribute="trailing" constant="16" id="tQ3-Pj-mIr"/>
                             <constraint firstItem="NCH-vd-bRs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="yKb-I7-qLH"/>
                             <constraint firstItem="mmJ-Rs-7EI" firstAttribute="top" secondItem="NCH-vd-bRs" secondAttribute="bottom" constant="16" id="yk9-tA-SoK"/>
                         </constraints>
@@ -106,6 +130,7 @@
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
                         <outlet property="categoryCollectionView" destination="mmJ-Rs-7EI" id="PjS-cn-SxT"/>
+                        <outlet property="mealsCollectionView" destination="kkh-Vg-5hq" id="364-hE-AIb"/>
                         <outlet property="searchBarBackground" destination="FWs-1H-gzb" id="kym-g6-3fL"/>
                         <outlet property="searchBarOutlet" destination="1XN-PZ-rpT" id="t18-uk-dfb"/>
                     </connections>
