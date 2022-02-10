@@ -31,8 +31,10 @@ class MealsCell: UICollectionViewCell {
         }
     }
     
-    public func configure(with text: String){
-       
+    public func configure(with mealImage: UIImage, and mealName: String){
+        mealCellImage.image = mealImage
+        mealCellImage.layer.cornerRadius = 20
+        mealCellLabel.text = mealName
     }
     
     static func nib() -> UINib{

@@ -21,6 +21,7 @@ class MealsVC: UIViewController {
     var categoryImage: [String] = []
     var mealList: [String] = []
     var mealImage: [String] = []
+    var mealIDs: [String] = []
     let categoriesURL = theMealDBURL().categoriesURL
     var categorySelection = ""
     
@@ -30,11 +31,6 @@ class MealsVC: UIViewController {
         getCategory()
         setupCategoryCollectionView()
         setupmealsCollectionView()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +49,6 @@ class MealsVC: UIViewController {
 }
 extension MealsVC{
     func setupView(){
-        
         searchBarOutlet.setLeftPaddingPoints(47)
         searchBarOutlet.addSubview(magnifier)
         searchBarBackground.layer.cornerRadius = 15
@@ -127,13 +122,14 @@ extension MealsVC{
         }
         DispatchQueue.main.async {
             self.categoryCollectionView.reloadData()
+            let inputURL = theMealDBURL().mealsPerCategoryURL + self.categoryList[0]
+            self.getMealsFromCategory(url: inputURL)
         }
     }
     
-    func getMealsFromCategory(){
-        let mealsURL = theMealDBURL().mealsPerCategoryURL + categorySelection
-        print("meal category search URL: \(mealsURL)")
-        let task = URLSession.shared.dataTask(with: URL(string: mealsURL)!, completionHandler: { data, response, error in
+    func getMealsFromCategory(url: String){
+        print("meal category search URL: \(url)")
+        let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
             guard let data = data, error == nil else {
                 print("\(error!.localizedDescription)")
                 return
@@ -163,6 +159,7 @@ extension MealsVC{
             let entry = pulledMeals.meals[i] as MealDetail
             mealList.append(entry.strMeal)
             mealImage.append(entry.strMealThumb)
+            mealIDs.append(entry.idMeal)
         }
         DispatchQueue.main.async {
             print("mealList count: \(self.mealList.count)")
@@ -174,14 +171,16 @@ extension MealsVC{
 extension MealsVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == mealsCollectionView {
-            _ = collectionView.cellForItem(at: indexPath) as! MealsCell
             print(indexPath)
         }
         
         if collectionView == categoryCollectionView{
             let selectedCell = collectionView.cellForItem(at: indexPath) as! CategoryCell
             categorySelection = selectedCell.categoryLabel.text!
-            getMealsFromCategory()
+            mealList = []
+            mealImage = []
+            mealIDs = []
+            getMealsFromCategory(url: theMealDBURL().mealsPerCategoryURL + categorySelection)
         }
     }
     
@@ -201,11 +200,17 @@ extension MealsVC: UICollectionViewDataSource{
         if collectionView == mealsCollectionView {
             let mealCell = mealsCollectionView.dequeueReusableCell(withReuseIdentifier: MealsCell.identifier, for: indexPath) as! MealsCell
             
+            let url = URL(string: self.mealImage[indexPath.row])
+            let mealName = self.mealList[indexPath.row]
+            let mealImage = UIImageView().loadImageFromURL(url: url!)
+            
+            mealCell.configure(with: mealImage, and: mealName)
+            
             return mealCell
         }
         
         let categoryCell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier, for: indexPath) as! CategoryCell
-        categoryCell.configure(with: "\(self.categoryList[indexPath.row])")
+            categoryCell.configure(with: "\(self.categoryList[indexPath.row])")
         return categoryCell
     }
     
