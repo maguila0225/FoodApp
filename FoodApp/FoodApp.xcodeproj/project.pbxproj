@@ -37,6 +37,8 @@
 		5BD93E5727B3B2F100F0C9B9 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E5627B3B2F100F0C9B9 /* Map.storyboard */; };
 		5BD93E5927B3B30600F0C9B9 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E5827B3B30600F0C9B9 /* Account.storyboard */; };
 		5BD93E5B27B4872800F0C9B9 /* MealsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E5A27B4872800F0C9B9 /* MealsModel.swift */; };
+		5BD93E6027B4C4BA00F0C9B9 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E5E27B4C4BA00F0C9B9 /* CategoryCell.swift */; };
+		5BD93E6127B4C4BA00F0C9B9 /* CategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E5F27B4C4BA00F0C9B9 /* CategoryCell.xib */; };
 		C45BA2B4CE43D5C812B77C48 /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +75,8 @@
 		5BD93E5627B3B2F100F0C9B9 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		5BD93E5827B3B30600F0C9B9 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		5BD93E5A27B4872800F0C9B9 /* MealsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsModel.swift; sourceTree = "<group>"; };
+		5BD93E5E27B4C4BA00F0C9B9 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		5BD93E5F27B4C4BA00F0C9B9 /* CategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCell.xib; sourceTree = "<group>"; };
 		820E126AFFDF64B3801479B1 /* Pods-FoodApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.release.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.release.xcconfig"; sourceTree = "<group>"; };
 		EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FC71A318EEB9C9AAAB0A7C /* Pods-FoodApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				5BD93E5427B3B2C100F0C9B9 /* Chat.storyboard */,
 				5BD93E5627B3B2F100F0C9B9 /* Map.storyboard */,
 				5BD93E5827B3B30600F0C9B9 /* Account.storyboard */,
+				5BD93E5E27B4C4BA00F0C9B9 /* CategoryCell.swift */,
+				5BD93E5F27B4C4BA00F0C9B9 /* CategoryCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -340,6 +346,7 @@
 				5BD93E3727B101C500F0C9B9 /* Home.storyboard in Resources */,
 				5BD93E5727B3B2F100F0C9B9 /* Map.storyboard in Resources */,
 				5BD93E3327B0E25000F0C9B9 /* GoogleService-Info.plist in Resources */,
+				5BD93E6127B4C4BA00F0C9B9 /* CategoryCell.xib in Resources */,
 				5BD93E0327AB7F3F00F0C9B9 /* Assets.xcassets in Resources */,
 				5BD93E0127AB7F3D00F0C9B9 /* Main.storyboard in Resources */,
 				5BD93E5927B3B30600F0C9B9 /* Account.storyboard in Resources */,
@@ -417,6 +424,7 @@
 				5BD93E4F27B37D2000F0C9B9 /* MainNavVC.swift in Sources */,
 				5BD93E2727AE74BA00F0C9B9 /* LocationSearchVC.swift in Sources */,
 				5BD93E1527AB8C4D00F0C9B9 /* LoginVC.swift in Sources */,
+				5BD93E6027B4C4BA00F0C9B9 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
