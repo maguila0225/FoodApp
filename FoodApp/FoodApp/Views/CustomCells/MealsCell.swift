@@ -21,6 +21,7 @@ class MealsCell: UICollectionViewCell {
         mealCellBackground.layer.cornerRadius = 20
         mealCellImage.image = UIImage(systemName: "flame")
         mealCellLabel.text = "Put Meal Name Here"
+        mealCellLabel.numberOfLines = 2
         mealCellButton.layer.cornerRadius = 10
     }
     

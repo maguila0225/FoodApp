@@ -18,26 +18,26 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfX-qU-sGa">
-                        <rect key="frame" x="-1.5" y="0.0" width="163" height="272"/>
+                        <rect key="frame" x="0.0" y="0.0" width="160" height="272"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v6j-2W-KPI">
-                                <rect key="frame" x="0.0" y="0.0" width="163" height="204"/>
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="204"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="204" id="mmg-Ah-2Qx"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MealName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFt-Fl-Bex">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Put Meal Name Here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFt-Fl-Bex">
                                 <rect key="frame" x="16" y="216.5" width="88" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="FJM-UA-cmc"/>
                                     <constraint firstAttribute="width" constant="88" id="S63-9Y-Ra2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGw-hN-ABX">
-                                <rect key="frame" x="119" y="218.5" width="30" height="30"/>
+                                <rect key="frame" x="116" y="218.5" width="30" height="30"/>
                                 <color key="backgroundColor" red="0.46955275540000002" green="0.71099728350000002" blue="0.27832230930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30.210000000000001" id="br9-KK-dRn"/>
@@ -51,7 +51,6 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xGw-hN-ABX" secondAttribute="trailing" constant="14" id="6sC-0b-24k"/>
-                            <constraint firstAttribute="width" constant="163.13" id="9D4-4p-Nqw"/>
                             <constraint firstItem="v6j-2W-KPI" firstAttribute="top" secondItem="cfX-qU-sGa" secondAttribute="top" id="ARt-mF-8o6"/>
                             <constraint firstItem="UFt-Fl-Bex" firstAttribute="top" secondItem="v6j-2W-KPI" secondAttribute="bottom" constant="12.529999999999999" id="LVb-YQ-uo2"/>
                             <constraint firstAttribute="trailing" secondItem="v6j-2W-KPI" secondAttribute="trailing" id="LXl-1e-mwh"/>
@@ -66,7 +65,9 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="cfX-qU-sGa" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="kj3-zr-JTx"/>
+                <constraint firstItem="cfX-qU-sGa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pEa-KT-7IC"/>
                 <constraint firstItem="cfX-qU-sGa" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="tZJ-LC-zjH"/>
+                <constraint firstAttribute="trailing" secondItem="cfX-qU-sGa" secondAttribute="trailing" id="zpS-Zh-caw"/>
             </constraints>
             <size key="customSize" width="160" height="272"/>
             <connections>

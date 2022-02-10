@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Explore-->
+        <!--MealsVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="MealsVC" id="Y6W-OH-hqX" customClass="MealsVC" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWs-1H-gzb" userLabel="SearchBarBackground">
-                                <rect key="frame" x="16" y="6" width="343" height="50"/>
+                                <rect key="frame" x="16" y="146" width="343" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search food or meal" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1XN-PZ-rpT">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
@@ -42,7 +42,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCH-vd-bRs">
-                                <rect key="frame" x="16" y="82.5" width="89.5" height="20"/>
+                                <rect key="frame" x="16" y="222.5" width="89.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="46y-uZ-kOX"/>
                                 </constraints>
@@ -51,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13p-OV-Yzd">
-                                <rect key="frame" x="290" y="83.5" width="82" height="18"/>
+                                <rect key="frame" x="290" y="223.5" width="82" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="FQA-IE-271"/>
                                 </constraints>
@@ -62,7 +62,7 @@
                                 </buttonConfiguration>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mmJ-Rs-7EI">
-                                <rect key="frame" x="0.0" y="118.5" width="375" height="42"/>
+                                <rect key="frame" x="0.0" y="258.5" width="375" height="42"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="B0a-AU-Rx4"/>
@@ -85,7 +85,7 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="kkh-Vg-5hq" userLabel="Meals Collection View">
-                                <rect key="frame" x="16" y="185.5" width="343" height="538.5"/>
+                                <rect key="frame" x="16" y="325.5" width="343" height="486.5"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kqy-Rz-KRd">
                                     <size key="itemSize" width="128" height="128"/>
@@ -104,6 +104,16 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Explore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKA-d9-jc3">
+                                <rect key="frame" x="16" y="92" width="116" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="F04-R6-3OJ"/>
+                                    <constraint firstAttribute="width" constant="116" id="WTG-LH-2yS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
@@ -112,11 +122,13 @@
                             <constraint firstItem="NCH-vd-bRs" firstAttribute="top" secondItem="FWs-1H-gzb" secondAttribute="bottom" constant="26.5" id="7dn-N5-eeu"/>
                             <constraint firstItem="mmJ-Rs-7EI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Azv-yg-ZxT"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="kkh-Vg-5hq" secondAttribute="bottom" id="KS6-kb-jhf"/>
+                            <constraint firstItem="mKA-d9-jc3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="LC4-CC-W8A"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mmJ-Rs-7EI" secondAttribute="trailing" id="TyW-N2-Mdb"/>
                             <constraint firstItem="FWs-1H-gzb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="br7-56-llU"/>
                             <constraint firstItem="kkh-Vg-5hq" firstAttribute="top" secondItem="mmJ-Rs-7EI" secondAttribute="bottom" constant="25" id="cJn-nm-eAJ"/>
+                            <constraint firstItem="FWs-1H-gzb" firstAttribute="top" secondItem="mKA-d9-jc3" secondAttribute="bottom" constant="14" id="dqR-uT-PtC"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FWs-1H-gzb" secondAttribute="trailing" constant="16" id="duC-CP-ak9"/>
-                            <constraint firstItem="FWs-1H-gzb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="6" id="jSj-W9-7Wu"/>
+                            <constraint firstItem="mKA-d9-jc3" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="92" id="ifd-qp-P9r"/>
                             <constraint firstItem="kkh-Vg-5hq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="mQR-dQ-7zp"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="13p-OV-Yzd" secondAttribute="trailing" constant="3" id="o6h-lK-YAO"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="kkh-Vg-5hq" secondAttribute="trailing" constant="16" id="tQ3-Pj-mIr"/>
@@ -124,8 +136,7 @@
                             <constraint firstItem="mmJ-Rs-7EI" firstAttribute="top" secondItem="NCH-vd-bRs" secondAttribute="bottom" constant="16" id="yk9-tA-SoK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Explore" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="8y0-p2-O4T"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="8y0-p2-O4T"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>

@@ -37,6 +37,15 @@ class MealsVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated);
+    }
+    
     @IBAction func searchBarTouchDown(_ sender: Any) {
         
     }
@@ -44,7 +53,7 @@ class MealsVC: UIViewController {
 }
 extension MealsVC{
     func setupView(){
-        navigationController?.navigationBar.prefersLargeTitles = true
+        
         searchBarOutlet.setLeftPaddingPoints(47)
         searchBarOutlet.addSubview(magnifier)
         searchBarBackground.layer.cornerRadius = 15
@@ -54,9 +63,11 @@ extension MealsVC{
     
     func setupmealsCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 163, height: 272)
+        layout.itemSize.height = 272
+        layout.itemSize.width = (view.bounds.width/2.0) - 24
         layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 16.87
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
         mealsCollectionView.showsVerticalScrollIndicator = false
         mealsCollectionView.delegate = self
         mealsCollectionView.dataSource = self
