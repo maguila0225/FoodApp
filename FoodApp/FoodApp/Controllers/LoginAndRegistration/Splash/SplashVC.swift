@@ -44,7 +44,7 @@ extension SplashVC{
             else {
                 let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
                  vc.modalPresentationStyle = .fullScreen
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.present(vc, animated: true, completion: nil)
             }
         }
     }

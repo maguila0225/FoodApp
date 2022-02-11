@@ -42,6 +42,14 @@
 		5BD93E6727B4F01A00F0C9B9 /* MealsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E6527B4F01A00F0C9B9 /* MealsCell.swift */; };
 		5BD93E6827B4F01A00F0C9B9 /* MealsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E6627B4F01A00F0C9B9 /* MealsCell.xib */; };
 		5BD93E6A27B55FFE00F0C9B9 /* ImageLoaderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E6927B55FFE00F0C9B9 /* ImageLoaderExtension.swift */; };
+		5BD93E6C27B5D1FD00F0C9B9 /* AllCategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E6B27B5D1FD00F0C9B9 /* AllCategoriesVC.swift */; };
+		5BD93E6F27B5D53E00F0C9B9 /* CategoryCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E6D27B5D53E00F0C9B9 /* CategoryCardCell.swift */; };
+		5BD93E7027B5D53E00F0C9B9 /* CategoryCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E6E27B5D53E00F0C9B9 /* CategoryCardCell.xib */; };
+		5BD93E7427B5F2D300F0C9B9 /* MealDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E7327B5F2D300F0C9B9 /* MealDetailVC.swift */; };
+		5BD93E7927B5FD4400F0C9B9 /* MealDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E7727B5FD4400F0C9B9 /* MealDetailCell.swift */; };
+		5BD93E7A27B5FD4400F0C9B9 /* MealDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E7827B5FD4400F0C9B9 /* MealDetailCell.xib */; };
+		5BD93E7F27B6431A00F0C9B9 /* ChatHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E7D27B6431A00F0C9B9 /* ChatHomeTableViewCell.swift */; };
+		5BD93E8027B6431A00F0C9B9 /* ChatHomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E7E27B6431A00F0C9B9 /* ChatHomeTableViewCell.xib */; };
 		C45BA2B4CE43D5C812B77C48 /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +91,14 @@
 		5BD93E6527B4F01A00F0C9B9 /* MealsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsCell.swift; sourceTree = "<group>"; };
 		5BD93E6627B4F01A00F0C9B9 /* MealsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealsCell.xib; sourceTree = "<group>"; };
 		5BD93E6927B55FFE00F0C9B9 /* ImageLoaderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderExtension.swift; sourceTree = "<group>"; };
+		5BD93E6B27B5D1FD00F0C9B9 /* AllCategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoriesVC.swift; sourceTree = "<group>"; };
+		5BD93E6D27B5D53E00F0C9B9 /* CategoryCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCardCell.swift; sourceTree = "<group>"; };
+		5BD93E6E27B5D53E00F0C9B9 /* CategoryCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCardCell.xib; sourceTree = "<group>"; };
+		5BD93E7327B5F2D300F0C9B9 /* MealDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailVC.swift; sourceTree = "<group>"; };
+		5BD93E7727B5FD4400F0C9B9 /* MealDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailCell.swift; sourceTree = "<group>"; };
+		5BD93E7827B5FD4400F0C9B9 /* MealDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealDetailCell.xib; sourceTree = "<group>"; };
+		5BD93E7D27B6431A00F0C9B9 /* ChatHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHomeTableViewCell.swift; sourceTree = "<group>"; };
+		5BD93E7E27B6431A00F0C9B9 /* ChatHomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatHomeTableViewCell.xib; sourceTree = "<group>"; };
 		820E126AFFDF64B3801479B1 /* Pods-FoodApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.release.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.release.xcconfig"; sourceTree = "<group>"; };
 		EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FC71A318EEB9C9AAAB0A7C /* Pods-FoodApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -236,6 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				5BD93E3B27B206D000F0C9B9 /* MealsVC.swift */,
+				5BD93E6B27B5D1FD00F0C9B9 /* AllCategoriesVC.swift */,
+				5BD93E7327B5F2D300F0C9B9 /* MealDetailVC.swift */,
 			);
 			path = Meals;
 			sourceTree = "<group>";
@@ -297,12 +315,34 @@
 		5BD93E6427B4EFEF00F0C9B9 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				5BD93E7B27B642B900F0C9B9 /* MealsModuel */,
+				5BD93E7C27B642D000F0C9B9 /* ChatModule */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		5BD93E7B27B642B900F0C9B9 /* MealsModuel */ = {
+			isa = PBXGroup;
+			children = (
 				5BD93E5E27B4C4BA00F0C9B9 /* CategoryCell.swift */,
 				5BD93E5F27B4C4BA00F0C9B9 /* CategoryCell.xib */,
 				5BD93E6527B4F01A00F0C9B9 /* MealsCell.swift */,
 				5BD93E6627B4F01A00F0C9B9 /* MealsCell.xib */,
+				5BD93E6D27B5D53E00F0C9B9 /* CategoryCardCell.swift */,
+				5BD93E6E27B5D53E00F0C9B9 /* CategoryCardCell.xib */,
+				5BD93E7727B5FD4400F0C9B9 /* MealDetailCell.swift */,
+				5BD93E7827B5FD4400F0C9B9 /* MealDetailCell.xib */,
 			);
-			path = CustomCells;
+			path = MealsModuel;
+			sourceTree = "<group>";
+		};
+		5BD93E7C27B642D000F0C9B9 /* ChatModule */ = {
+			isa = PBXGroup;
+			children = (
+				5BD93E7D27B6431A00F0C9B9 /* ChatHomeTableViewCell.swift */,
+				5BD93E7E27B6431A00F0C9B9 /* ChatHomeTableViewCell.xib */,
+			);
+			path = ChatModule;
 			sourceTree = "<group>";
 		};
 		80A66F50BC7E9A61BE7AB693 /* Pods */ = {
@@ -375,6 +415,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD93E5527B3B2C100F0C9B9 /* Chat.storyboard in Resources */,
+				5BD93E7027B5D53E00F0C9B9 /* CategoryCardCell.xib in Resources */,
+				5BD93E8027B6431A00F0C9B9 /* ChatHomeTableViewCell.xib in Resources */,
 				5BD93E0627AB7F3F00F0C9B9 /* LaunchScreen.storyboard in Resources */,
 				5BD93E3727B101C500F0C9B9 /* Home.storyboard in Resources */,
 				5BD93E6827B4F01A00F0C9B9 /* MealsCell.xib in Resources */,
@@ -384,6 +426,7 @@
 				5BD93E0327AB7F3F00F0C9B9 /* Assets.xcassets in Resources */,
 				5BD93E0127AB7F3D00F0C9B9 /* Main.storyboard in Resources */,
 				5BD93E5927B3B30600F0C9B9 /* Account.storyboard in Resources */,
+				5BD93E7A27B5FD4400F0C9B9 /* MealDetailCell.xib in Resources */,
 				5BD93E5327B3B23700F0C9B9 /* Meals.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +481,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BD93E2427AE598300F0C9B9 /* SizeExtension.swift in Sources */,
+				5BD93E6F27B5D53E00F0C9B9 /* CategoryCardCell.swift in Sources */,
+				5BD93E7427B5F2D300F0C9B9 /* MealDetailVC.swift in Sources */,
 				5BD93E1A27ABCEAC00F0C9B9 /* LocationVC.swift in Sources */,
 				5BD93DFE27AB7F3D00F0C9B9 /* SplashVC.swift in Sources */,
 				5BD93E1227AB816200F0C9B9 /* IntroVC.swift in Sources */,
@@ -449,6 +494,7 @@
 				5BD93E1727AB9AC400F0C9B9 /* RegisterVC.swift in Sources */,
 				5BD93E1C27ABFC6B00F0C9B9 /* UITextFieldPaddingExtension.swift in Sources */,
 				5BD93E3527B0F90200F0C9B9 /* EncoderDecoderExtension.swift in Sources */,
+				5BD93E6C27B5D1FD00F0C9B9 /* AllCategoriesVC.swift in Sources */,
 				5BD93E3E27B20EF800F0C9B9 /* AlertExtension.swift in Sources */,
 				5BD93E4C27B3620A00F0C9B9 /* AccountVC.swift in Sources */,
 				5BD93E4227B35D9600F0C9B9 /* HomeTabBarVC.swift in Sources */,
@@ -458,7 +504,9 @@
 				5BD93E4F27B37D2000F0C9B9 /* MainNavVC.swift in Sources */,
 				5BD93E6727B4F01A00F0C9B9 /* MealsCell.swift in Sources */,
 				5BD93E6A27B55FFE00F0C9B9 /* ImageLoaderExtension.swift in Sources */,
+				5BD93E7F27B6431A00F0C9B9 /* ChatHomeTableViewCell.swift in Sources */,
 				5BD93E2727AE74BA00F0C9B9 /* LocationSearchVC.swift in Sources */,
+				5BD93E7927B5FD4400F0C9B9 /* MealDetailCell.swift in Sources */,
 				5BD93E1527AB8C4D00F0C9B9 /* LoginVC.swift in Sources */,
 				5BD93E6027B4C4BA00F0C9B9 /* CategoryCell.swift in Sources */,
 			);

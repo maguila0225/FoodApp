@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,17 +15,54 @@
                     <view key="view" contentMode="scaleToFill" id="xGH-7l-T9Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySJ-MN-DDU" userLabel="SearchBackground">
+                                <rect key="frame" x="16" y="94" width="343" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QcJ-0y-dVY">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Gc9-BU-wj1"/>
+                                    <constraint firstItem="QcJ-0y-dVY" firstAttribute="leading" secondItem="ySJ-MN-DDU" secondAttribute="leading" id="S5w-RK-3UQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="QcJ-0y-dVY" secondAttribute="bottom" id="cG1-cj-gKD"/>
+                                    <constraint firstItem="QcJ-0y-dVY" firstAttribute="top" secondItem="ySJ-MN-DDU" secondAttribute="top" id="fkO-i5-hxv"/>
+                                    <constraint firstAttribute="trailing" secondItem="QcJ-0y-dVY" secondAttribute="trailing" id="s9V-bc-Gmz"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ucz-HH-gVd">
+                                <rect key="frame" x="16" y="165" width="359" height="647"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Oj2-g9-SEJ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ySJ-MN-DDU" firstAttribute="top" secondItem="Oj2-g9-SEJ" secondAttribute="top" constant="6" id="Alh-i4-kIf"/>
+                            <constraint firstItem="ucz-HH-gVd" firstAttribute="top" secondItem="ySJ-MN-DDU" secondAttribute="bottom" constant="21" id="AuN-aO-Trn"/>
+                            <constraint firstItem="ucz-HH-gVd" firstAttribute="leading" secondItem="Oj2-g9-SEJ" secondAttribute="leading" constant="16" id="THO-Wz-zum"/>
+                            <constraint firstItem="Oj2-g9-SEJ" firstAttribute="trailing" secondItem="ySJ-MN-DDU" secondAttribute="trailing" constant="16" id="ZRr-Zo-Hhz"/>
+                            <constraint firstItem="Oj2-g9-SEJ" firstAttribute="trailing" secondItem="ucz-HH-gVd" secondAttribute="trailing" id="d5I-Dh-fng"/>
+                            <constraint firstItem="Oj2-g9-SEJ" firstAttribute="bottom" secondItem="ucz-HH-gVd" secondAttribute="bottom" id="ov7-Xc-lsq"/>
+                            <constraint firstItem="ySJ-MN-DDU" firstAttribute="leading" secondItem="Oj2-g9-SEJ" secondAttribute="leading" constant="16" id="zJ4-kG-9sW"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Chat" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="1v3-JI-rNv"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationItem key="navigationItem" title="Chat" largeTitleDisplayMode="always" id="1v3-JI-rNv"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="812"/>
+                    <connections>
+                        <outlet property="chatHomeTableView" destination="ucz-HH-gVd" id="Uru-Ew-e9r"/>
+                        <outlet property="searchBackground" destination="ySJ-MN-DDU" id="WXo-bx-qqA"/>
+                        <outlet property="searchTextField" destination="QcJ-0y-dVY" id="aIH-Ha-83r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccT-Zf-e0p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-554" y="1509"/>
+            <point key="canvasLocation" x="201" y="783"/>
         </scene>
         <!--Chat-->
         <scene sceneID="dz1-ZC-WN2">
@@ -49,6 +87,9 @@
     <color key="tintColor" red="0.46955275540000002" green="0.71099728350000002" blue="0.27832230930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="message.fill" catalog="system" width="128" height="113"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
