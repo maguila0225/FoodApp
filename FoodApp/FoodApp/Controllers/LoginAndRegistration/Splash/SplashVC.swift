@@ -44,8 +44,10 @@ extension SplashVC{
             else {
                 let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
                  vc.modalPresentationStyle = .fullScreen
+                print("foodAppIsSignedInUser: \(UserDefaults.standard.object(forKey: "foodAppIsSignedInUser") ?? "" )")
                 self.present(vc, animated: true, completion: nil)
             }
         }
     }
 }
+

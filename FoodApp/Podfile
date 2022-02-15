@@ -10,7 +10,7 @@ target 'FoodApp' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
-
+  pod 'IQKeyboardManager', '~> 6.5'
 
   # Pods for FoodApp
 

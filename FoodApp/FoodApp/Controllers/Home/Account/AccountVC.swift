@@ -42,6 +42,7 @@ extension AccountVC{
     }
     fileprivate func setUserDefaults(){
         UserDefaults.standard.set(false, forKey: "foodAppIsSignedIn")
+        UserDefaults.standard.set("", forKey: "foodAppIsSignedInUser")
         UserDefaults.standard.synchronize()
         returnToSplashVC()
     }

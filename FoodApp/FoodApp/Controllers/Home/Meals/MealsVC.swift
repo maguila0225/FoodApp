@@ -21,7 +21,7 @@ class MealsVC: UIViewController {
     var categoryImage: [String] = []
     var mealList: [String] = []
     var mealImage: [String] = []
-    var thumbnails: [UIImage] = []
+    var thumbnails: [UIImage?] = []
     var mealIDs: [String] = []
     let categoriesURL = theMealDBURL().categoriesURL
     var categorySelection = ""
@@ -148,16 +148,15 @@ extension MealsVC{
         let mealCount = pulledMeals.meals.count
         for i in 0...(mealCount - 1) {
             let entry = pulledMeals.meals[i] as MealDetail
-            DispatchQueue.main.async{
+            DispatchQueue.main.async {
                 self.mealList.append(entry.strMeal)
                 self.mealImage.append(entry.strMealThumb)
                 self.mealIDs.append(entry.idMeal)
-                let url = URL(string: entry.strMealThumb)
-                let image = UIImageView().loadImageFromURL(url: url!)
-                self.thumbnails.append(image)
+//                let url = URL(string: entry.strMealThumb)
+//                self.thumbnails.append(UIImageView().loadImageFromURL(url: url!))
             }
         }
-        DispatchQueue.main.async {
+        DispatchQueue.main.async{
             self.mealsCollectionView.reloadData()
         }
     }
@@ -178,6 +177,7 @@ extension MealsVC: UICollectionViewDelegate{
             getMealsFromCategory(url: theMealDBURL().mealsPerCategoryURL + categorySelection)
             DispatchQueue.main.async {
                 self.clearStoredMeals()
+//                self.mealsCollectionView.reloadData()
             }
         }
     }
@@ -218,7 +218,9 @@ extension MealsVC: UICollectionViewDataSource{
                                                                    for: indexPath) as! MealsCell
             
             let mealName = self.mealList[indexPath.row]
-            let mealImage = self.thumbnails[indexPath.row]
+//            let url = URL(string: self.mealImage[indexPath.row])
+//            let mealImage = UIImageView().loadImageFromURL(url: url!)
+            let mealImage = UIImage(systemName: "flame")!
             mealCell.configure(with: mealImage, and: mealName)
             
             returnCell = mealCell

@@ -77,6 +77,7 @@ extension LoginVC{
     
     fileprivate func updateUserDefaults(){
         UserDefaults.standard.set(true, forKey: "foodAppIsSignedIn")
+        UserDefaults.standard.set(usernameTextField.text, forKey: "foodAppIsSignedInUser")
         UserDefaults.standard.synchronize()
     }
     // MARK: - Screen Transition Functions
