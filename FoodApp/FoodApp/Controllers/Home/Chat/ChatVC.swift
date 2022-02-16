@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+
 
 class ChatVC: UIViewController {
     
@@ -13,11 +16,17 @@ class ChatVC: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var chatHomeTableView: UITableView!
     
+    let firestoreDatabase = Firestore.firestore()
+    var userDocID: String = ""
     let magnifier = UIImageView()
+    let signedInUser = UserDefaults.standard.object(forKey: "foodAppIsSignedInUser") as? String
+    var joinedRooms: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupTableView()
+        getUserDocID()
     }
     
 }
@@ -40,8 +49,45 @@ extension ChatVC{
         chatHomeTableView.register(ChatHomeTableViewCell.nib(), forCellReuseIdentifier: ChatHomeTableViewCell.identifier)
     }
     
+    func getUserDocID(){
+        let docRef = firestoreDatabase.collection("UserInfo").whereField("email", isEqualTo: signedInUser!)
+        docRef.getDocuments { querySnapshot, error in
+            guard let snapshot = querySnapshot, error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            for document in snapshot.documents{
+                self.userDocID = document.documentID
+            }
+            self.getJoinedRooms()
+        }
+    }
+    
+    func getJoinedRooms(){
+        let docRef = firestoreDatabase.collection("MessageRoom").document(userDocID)
+        docRef.getDocument { querySnapshot, error in
+            guard let snapshot = querySnapshot, error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            guard let data = snapshot.data() else { return }
+            for room in data.values{
+                self.joinedRooms.append(room as! String)
+            }
+            self.setJoinedRooms()
+        }
+    }
+    
+    func setJoinedRooms(){
+        for i in 0...(joinedRooms.count - 1){
+            UserDefaults.standard.set(true, forKey: joinedRooms[i])
+            print(joinedRooms[i])
+        }
+    }
+    
     @objc func presentNewMessageVC(){
         let vc = UIStoryboard(name: "Chat", bundle: nil).instantiateViewController(withIdentifier: "NewMessageVC") as! NewMessageVC
+        vc.userDocID = userDocID
         present(vc, animated: true, completion: nil)
     }
 

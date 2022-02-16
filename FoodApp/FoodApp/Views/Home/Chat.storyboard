@@ -166,7 +166,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="812"/>
                     <connections>
-                        <outlet property="personSearchTextField" destination="5S6-IA-n65" id="6MZ-8x-wPW"/>
+                        <outlet property="recipientListTextField" destination="5S6-IA-n65" id="6MZ-8x-wPW"/>
                         <outlet property="usersTableView" destination="I6g-i2-Eg1" id="t9F-wA-DOq"/>
                     </connections>
                 </viewController>
