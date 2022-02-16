@@ -20,7 +20,6 @@ class ChatVC: UIViewController {
     var userDocID: String = ""
     let magnifier = UIImageView()
     let signedInUser = UserDefaults.standard.object(forKey: "foodAppIsSignedInUser") as? String
-    var joinedRooms: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,14 +70,12 @@ extension ChatVC{
                 return
             }
             guard let data = snapshot.data() else { return }
-            for room in data.values{
-                self.joinedRooms.append(room as! String)
-            }
-            self.setJoinedRooms()
+            let rooms = data["rooms"] as! [String]
+            self.setJoinedRooms(joinedRooms: rooms)
         }
     }
     
-    func setJoinedRooms(){
+    func setJoinedRooms(joinedRooms: [String]){
         for i in 0...(joinedRooms.count - 1){
             UserDefaults.standard.set(true, forKey: joinedRooms[i])
             print(joinedRooms[i])

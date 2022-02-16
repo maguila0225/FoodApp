@@ -17,12 +17,7 @@ class MessageVC: UIViewController {
     
     let firestoreDatabase = Firestore.firestore()
     let signedInUser = UserDefaults.standard.object(forKey: "foodAppIsSignedInUser") as! String
-    
-    
-    var recipientName: String = ""
-    var recipientEmail: String = ""
     var recipientProfilePicture: UIImage = UIImage(systemName: "person.circle.fill")!
-    var recipientDocID: String = ""
     
     var userDocID: String = ""
     var roomMembers: [String] = []
@@ -123,9 +118,14 @@ extension MessageVC{
         docRef.getDocument { document, error in
             guard let doc = document, error == nil else { return }
             if doc.exists{
-                docRef.updateData([roomName:roomName])
+                var rooms = doc["rooms"] as! [String]
+                rooms.append(roomName)
+                docRef.setData(["rooms":rooms], merge: true, completion: nil)
             } else {
-                docRef.setData([roomName:roomName])
+                var rooms: [String:[String]] = [:]
+                rooms["rooms"] = []
+                rooms["rooms"]!.append(roomName)
+                docRef.setData(rooms, merge: true, completion: nil)
             }
         }
     }
