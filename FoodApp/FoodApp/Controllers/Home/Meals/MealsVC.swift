@@ -110,10 +110,10 @@ extension MealsVC{
             categoryList.append(entry.strCategory)
             categoryImage.append(entry.strCategoryThumb)
         }
+        let inputURL = theMealDBURL().mealsPerCategoryURL + self.categoryList[0]
+        getMealsFromCategory(url: inputURL)
         DispatchQueue.main.async {
             self.categoryCollectionView.reloadData()
-            let inputURL = theMealDBURL().mealsPerCategoryURL + self.categoryList[0]
-            self.getMealsFromCategory(url: inputURL)
         }
     }
     
@@ -148,15 +148,11 @@ extension MealsVC{
         let mealCount = pulledMeals.meals.count
         for i in 0...(mealCount - 1) {
             let entry = pulledMeals.meals[i] as MealDetail
-            DispatchQueue.main.async {
-                self.mealList.append(entry.strMeal)
-                self.mealImage.append(entry.strMealThumb)
-                self.mealIDs.append(entry.idMeal)
-//                let url = URL(string: entry.strMealThumb)
-//                self.thumbnails.append(UIImageView().loadImageFromURL(url: url!))
-            }
+                mealList.append(entry.strMeal)
+                mealImage.append(entry.strMealThumb)
+                mealIDs.append(entry.idMeal)
         }
-        DispatchQueue.main.async{
+        DispatchQueue.main.async {
             self.mealsCollectionView.reloadData()
         }
     }
@@ -175,10 +171,7 @@ extension MealsVC: UICollectionViewDelegate{
             let selectedCell = collectionView.cellForItem(at: indexPath) as! CategoryCell
             categorySelection = selectedCell.categoryLabel.text!
             getMealsFromCategory(url: theMealDBURL().mealsPerCategoryURL + categorySelection)
-            DispatchQueue.main.async {
-                self.clearStoredMeals()
-//                self.mealsCollectionView.reloadData()
-            }
+            clearStoredMeals()
         }
     }
     
@@ -216,13 +209,12 @@ extension MealsVC: UICollectionViewDataSource{
         if collectionView == mealsCollectionView {
             let mealCell = mealsCollectionView.dequeueReusableCell(withReuseIdentifier: MealsCell.identifier,
                                                                    for: indexPath) as! MealsCell
-            
             let mealName = self.mealList[indexPath.row]
-//            let url = URL(string: self.mealImage[indexPath.row])
-//            let mealImage = UIImageView().loadImageFromURL(url: url!)
-            let mealImage = UIImage(systemName: "flame")!
-            mealCell.configure(with: mealImage, and: mealName)
-            
+            let url = URL(string: self.mealImage[indexPath.row])
+            let mealImage = UIImageView().loadImageFromURL(url: url!)
+            DispatchQueue.main.async {
+                mealCell.configure(with: mealImage, and: mealName)
+            }
             returnCell = mealCell
         }
         

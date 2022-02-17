@@ -20,7 +20,9 @@ class ChatVC: UIViewController {
     var userDocID: String = ""
     let magnifier = UIImageView()
     let signedInUser = UserDefaults.standard.object(forKey: "foodAppIsSignedInUser") as? String
-    
+    var joinedRooms: [String] = []
+    var roomMembers: [String] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -71,6 +73,8 @@ extension ChatVC{
             }
             guard let data = snapshot.data() else { return }
             let rooms = data["rooms"] as! [String]
+            self.joinedRooms = rooms
+            self.chatHomeTableView.reloadData()
             self.setJoinedRooms(joinedRooms: rooms)
         }
     }
@@ -87,24 +91,48 @@ extension ChatVC{
         vc.userDocID = userDocID
         present(vc, animated: true, completion: nil)
     }
-
+    
 }
 
 extension ChatVC: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        let selectedRoom = self.joinedRooms[indexPath.row]
+        getRoomMembers(selectedRoom)
+    }
+    
+    fileprivate func getRoomMembers(_ selectedRoom: String) {
+        let docRefRoom = firestoreDatabase.collection("Room").document(selectedRoom)
+        docRefRoom.getDocument { querySnapshot, error in
+            guard let snapshot = querySnapshot, error == nil else {
+                print(error?.localizedDescription ?? "error encountered")
+                return
+            }
+            let data = snapshot.data()
+            self.roomMembers = data!["roomMembers"] as! [String]
+            self.presentMessageVC()
+        }
+    }
+    
+    fileprivate func presentMessageVC(){
+        let vc = UIStoryboard(name: "Chat", bundle: nil).instantiateViewController(withIdentifier: "MessageVC") as! MessageVC
+        vc.roomMembers = self.roomMembers
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
 }
 
 extension ChatVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return joinedRooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = chatHomeTableView.dequeueReusableCell(withIdentifier: ChatHomeTableViewCell.identifier) as! ChatHomeTableViewCell
+        
+        DispatchQueue.main.async {
+            cell.configure(roomName: self.joinedRooms[indexPath.row])
+        }
         return cell
     }
-    
     
 }

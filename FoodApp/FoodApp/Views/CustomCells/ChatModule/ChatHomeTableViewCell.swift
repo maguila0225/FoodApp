@@ -15,6 +15,7 @@ class ChatHomeTableViewCell: UITableViewCell {
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var latestMessage: UILabel!
     @IBOutlet weak var timestamp: UILabel!
+    @IBOutlet weak var conversationName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,11 +24,11 @@ class ChatHomeTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
-    public func configure(with text: String){
-        
+    public func configure(roomName: String){
+        conversationName.text = roomName
     }
     
     static func nib() -> UINib{

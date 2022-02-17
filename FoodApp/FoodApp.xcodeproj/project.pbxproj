@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5B2D274E27BC16A600E853D5 /* DateToStringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D274D27BC16A600E853D5 /* DateToStringExtension.swift */; };
+		5B2D275127BDC9F000E853D5 /* ChatBubbleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D274F27BDC9F000E853D5 /* ChatBubbleCell.swift */; };
+		5B2D275227BDC9F000E853D5 /* ChatBubbleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B2D275027BDC9F000E853D5 /* ChatBubbleCell.xib */; };
+		5B2D275427BDFAB700E853D5 /* TableViewScrollExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2D275327BDFAB700E853D5 /* TableViewScrollExtension.swift */; };
 		5BD93DFA27AB7F3D00F0C9B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93DF927AB7F3D00F0C9B9 /* AppDelegate.swift */; };
 		5BD93DFC27AB7F3D00F0C9B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93DFB27AB7F3D00F0C9B9 /* SceneDelegate.swift */; };
 		5BD93DFE27AB7F3D00F0C9B9 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93DFD27AB7F3D00F0C9B9 /* SplashVC.swift */; };
@@ -60,6 +63,9 @@
 
 /* Begin PBXFileReference section */
 		5B2D274D27BC16A600E853D5 /* DateToStringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateToStringExtension.swift; sourceTree = "<group>"; };
+		5B2D274F27BDC9F000E853D5 /* ChatBubbleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubbleCell.swift; sourceTree = "<group>"; };
+		5B2D275027BDC9F000E853D5 /* ChatBubbleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatBubbleCell.xib; sourceTree = "<group>"; };
+		5B2D275327BDFAB700E853D5 /* TableViewScrollExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScrollExtension.swift; sourceTree = "<group>"; };
 		5BD93DF627AB7F3D00F0C9B9 /* FoodApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BD93DF927AB7F3D00F0C9B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BD93DFB27AB7F3D00F0C9B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -243,6 +249,7 @@
 				5BD93E3D27B20EF800F0C9B9 /* AlertExtension.swift */,
 				5BD93E6927B55FFE00F0C9B9 /* ImageLoaderExtension.swift */,
 				5B2D274D27BC16A600E853D5 /* DateToStringExtension.swift */,
+				5B2D275327BDFAB700E853D5 /* TableViewScrollExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -356,6 +363,8 @@
 				5BD93E7E27B6431A00F0C9B9 /* ChatHomeTableViewCell.xib */,
 				5BD93E8527BB25B700F0C9B9 /* NewMessageTableViewCell.swift */,
 				5BD93E8627BB25B700F0C9B9 /* NewMessageTableViewCell.xib */,
+				5B2D274F27BDC9F000E853D5 /* ChatBubbleCell.swift */,
+				5B2D275027BDC9F000E853D5 /* ChatBubbleCell.xib */,
 			);
 			path = ChatModule;
 			sourceTree = "<group>";
@@ -444,6 +453,7 @@
 				5BD93E5927B3B30600F0C9B9 /* Account.storyboard in Resources */,
 				5BD93E7A27B5FD4400F0C9B9 /* MealDetailCell.xib in Resources */,
 				5BD93E5327B3B23700F0C9B9 /* Meals.storyboard in Resources */,
+				5B2D275227BDC9F000E853D5 /* ChatBubbleCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +513,7 @@
 				5BD93E1A27ABCEAC00F0C9B9 /* LocationVC.swift in Sources */,
 				5BD93DFE27AB7F3D00F0C9B9 /* SplashVC.swift in Sources */,
 				5BD93E1227AB816200F0C9B9 /* IntroVC.swift in Sources */,
+				5B2D275127BDC9F000E853D5 /* ChatBubbleCell.swift in Sources */,
 				5BD93E2927AFEC4000F0C9B9 /* LocationModel.swift in Sources */,
 				5BD93E3C27B206D000F0C9B9 /* MealsVC.swift in Sources */,
 				5BD93DFA27AB7F3D00F0C9B9 /* AppDelegate.swift in Sources */,
@@ -519,6 +530,7 @@
 				5BD93E4227B35D9600F0C9B9 /* HomeTabBarVC.swift in Sources */,
 				5BD93DFC27AB7F3D00F0C9B9 /* SceneDelegate.swift in Sources */,
 				5BD93E5B27B4872800F0C9B9 /* MealsModel.swift in Sources */,
+				5B2D275427BDFAB700E853D5 /* TableViewScrollExtension.swift in Sources */,
 				5BD93E1E27ACEE3700F0C9B9 /* UserModel.swift in Sources */,
 				5BD93E4F27B37D2000F0C9B9 /* MainNavVC.swift in Sources */,
 				5BD93E6727B4F01A00F0C9B9 /* MealsCell.swift in Sources */,

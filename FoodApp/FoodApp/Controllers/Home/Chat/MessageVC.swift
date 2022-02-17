@@ -20,25 +20,34 @@ class MessageVC: UIViewController {
     var recipientProfilePicture: UIImage = UIImage(systemName: "person.circle.fill")!
     
     var userDocID: String = ""
+    var userEmail: String = ""
+    public var userFullName: String = ""
     var roomMembers: [String] = []
     var roomMembersDocID: [String] = []
     var roomName: String = ""
+    var roomListener: ListenerRegistration?
+    var messageArray: [[String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        messageOutlet.delegate = self
         getUserDocID()
         getRoomMembersDocID()
         getRoomName()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupView()
+        setupTableView()
+        messageTableView.reloadData()
+        messageTableView.scrollToBottomRow()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        roomListener!.remove()
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -64,6 +73,9 @@ extension MessageVC{
             }
             for document in snapshot.documents{
                 self.userDocID = document.documentID
+                let data = document.data()
+                self.userEmail = data["email"] as! String
+                self.userFullName = (data["firstName"] as! String) + " " + (data["lastName"] as! String)
             }
         }
     }
@@ -89,15 +101,50 @@ extension MessageVC{
         }
     }
     
+    func setupView(){
+        messageOutlet.delegate = self
+        userName.text = roomName
+        self.roomListener = setupListener()
+    }
+    
+    func setupListener() -> ListenerRegistration{
+        let db = firestoreDatabase
+        let listener = db.collection("Room").document(roomName)
+            .addSnapshotListener { documentSnapshot, error in
+                guard let document = documentSnapshot else {
+                    print("Error fetching document: \(error!)")
+                    return
+                }
+                guard let data = document.data() else {
+                    print("Document data was empty.")
+                    return
+                }
+                guard data["messages"] != nil else{ return }
+                self.messageArray = []
+                let messages = data["messages"] as! [String:[String]]
+                for i in 0...(messages.count - 1){
+                    self.messageArray.append(messages["message\(i)"]!)
+                }
+                print(self.messageArray)
+                self.messageTableView.reloadData()
+                self.messageTableView.scrollToBottomRow()
+            }
+        return listener
+    }
+    
+    func setupTableView(){
+        messageTableView.delegate = self
+        messageTableView.dataSource = self
+        messageTableView.register(ChatBubbleCell.nib(), forCellReuseIdentifier: ChatBubbleCell.identifier)
+    }
+    
     func checkRoom(){
         let roomName = roomName
         if UserDefaults.standard.bool(forKey: roomName) == true {
-            print("conversation exists, proceed with sending message")
             getMessage(roomName: roomName)
         }
         
         else{
-            print("no conversation exists, create new conversation")
             UserDefaults.standard.set(true, forKey: roomName)
             UserDefaults.standard.synchronize()
             newRoomSetup(roomName: roomName)
@@ -119,8 +166,13 @@ extension MessageVC{
             guard let doc = document, error == nil else { return }
             if doc.exists{
                 var rooms = doc["rooms"] as! [String]
-                rooms.append(roomName)
-                docRef.setData(["rooms":rooms], merge: true, completion: nil)
+                if rooms.contains(roomName){
+                    return
+                }
+                else{
+                    rooms.append(roomName)
+                    docRef.setData(["rooms":rooms], merge: true, completion: nil)
+                }
             } else {
                 var rooms: [String:[String]] = [:]
                 rooms["rooms"] = []
@@ -143,15 +195,12 @@ extension MessageVC{
                 print("no data")
                 return
             }
-            print(data["messages"] ?? "data[messages] is nil")
-            
             if data["messages"] != nil {
                 var messages = data["messages"] as! [String:[String]]
                 let count = messages.count
-                let timestamp = Date()
-                let messageTimestamp = timestamp.toString(format: "yyyy-MM-dd HH:mm:ss")
+                let messageTimestamp = Date().toString(format: "yyyy-MM-dd HH:mm:ss")
                 let message = self.messageOutlet.text ?? " "
-                messages["message\(count)"] = [message,messageTimestamp,self.userDocID]
+                messages["message\(count)"] = [message,messageTimestamp,self.userFullName]
                 self.sendMessage(messages: messages)
             }
             else {
@@ -159,12 +208,11 @@ extension MessageVC{
                 let timestamp = Date()
                 let messageTimestamp = timestamp.toString(format: "yyyy-MM-dd HH:mm:ss")
                 let message = self.messageOutlet.text ?? " "
-                messages["message0"] = [message,messageTimestamp,self.userDocID]
+                messages["message0"] = [message,messageTimestamp,self.userFullName]
                 self.sendMessage(messages: messages)
             }
         }
     }
-    
     
     fileprivate func sendMessage(messages: [String:[String]]) {
         let docRefRoom = firestoreDatabase.collection("Room").document(roomName)
@@ -179,3 +227,24 @@ extension MessageVC{
     
 }
 
+extension  MessageVC: UITableViewDelegate{
+    
+}
+
+extension MessageVC: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return messageArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = messageTableView.dequeueReusableCell(withIdentifier: ChatBubbleCell.identifier) as! ChatBubbleCell
+        DispatchQueue.main.async {
+            cell.configure(sender: self.messageArray[indexPath.row][2],
+                           message: self.messageArray[indexPath.row][0],
+                           timestamp: self.messageArray[indexPath.row][1],
+                           user: self.userFullName)
+        }
+        
+        return cell
+    }
+}

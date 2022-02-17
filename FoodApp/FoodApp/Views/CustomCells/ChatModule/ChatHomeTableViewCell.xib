@@ -27,12 +27,12 @@
                                     <constraint firstAttribute="width" constant="45" id="mLi-NG-RA4"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9za-1L-jXz">
-                                <rect key="frame" x="65" y="0.0" width="102" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9za-1L-jXz">
+                                <rect key="frame" x="65" y="0.0" width="92" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="RC9-IZ-jRV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -57,6 +57,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="DDY-RL-fvy" firstAttribute="leading" secondItem="9za-1L-jXz" secondAttribute="trailing" constant="112.5" id="1p5-2M-HIv"/>
                             <constraint firstAttribute="trailing" secondItem="61t-v8-xri" secondAttribute="trailing" id="7dG-dd-BHW"/>
                             <constraint firstItem="0ED-LX-DOG" firstAttribute="leading" secondItem="2O8-Jv-i8q" secondAttribute="leading" id="Ld3-8g-0V9"/>
                             <constraint firstAttribute="trailing" secondItem="DDY-RL-fvy" secondAttribute="trailing" id="Mbf-ts-xIU"/>
@@ -81,6 +82,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="background" destination="2O8-Jv-i8q" id="Hni-9N-flE"/>
+                <outlet property="conversationName" destination="9za-1L-jXz" id="UGb-wt-dLj"/>
                 <outlet property="latestMessage" destination="61t-v8-xri" id="OOx-3S-wav"/>
                 <outlet property="profilePicture" destination="0ED-LX-DOG" id="UHT-yJ-ymy"/>
                 <outlet property="timestamp" destination="DDY-RL-fvy" id="P9z-OR-Mi1"/>

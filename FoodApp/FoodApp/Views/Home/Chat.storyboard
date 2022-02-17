@@ -201,10 +201,10 @@
                                     <action selector="backAction:" destination="btt-eh-f98" eventType="touchUpInside" id="Q6X-Ig-cNY"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TbS-Ff-QXc">
-                                <rect key="frame" x="0.0" y="114" width="375" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TbS-Ff-QXc">
+                                <rect key="frame" x="0.0" y="114" width="375" height="38"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="7kc-4G-KC8"/>
+                                    <constraint firstAttribute="height" constant="38" id="7kc-4G-KC8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -233,7 +233,7 @@
                             <constraint firstItem="JgX-29-Ekr" firstAttribute="leading" secondItem="oRt-td-ndx" secondAttribute="leading" constant="16" id="0ES-1e-5XG"/>
                             <constraint firstItem="oRt-td-ndx" firstAttribute="trailing" secondItem="TbS-Ff-QXc" secondAttribute="trailing" id="1iW-bD-ruV"/>
                             <constraint firstItem="TbS-Ff-QXc" firstAttribute="top" secondItem="bVw-5d-UIa" secondAttribute="bottom" constant="15" id="7rW-x5-dCE"/>
-                            <constraint firstItem="aFm-Yi-PkK" firstAttribute="top" secondItem="TbS-Ff-QXc" secondAttribute="bottom" constant="20" id="B2s-Ka-lTd"/>
+                            <constraint firstItem="aFm-Yi-PkK" firstAttribute="top" secondItem="TbS-Ff-QXc" secondAttribute="bottom" id="B2s-Ka-lTd"/>
                             <constraint firstItem="aFm-Yi-PkK" firstAttribute="leading" secondItem="oRt-td-ndx" secondAttribute="leading" id="NmO-G8-Kt0"/>
                             <constraint firstItem="oRt-td-ndx" firstAttribute="trailing" secondItem="JgX-29-Ekr" secondAttribute="trailing" constant="16" id="P15-L7-J8G"/>
                             <constraint firstItem="oRt-td-ndx" firstAttribute="trailing" secondItem="aFm-Yi-PkK" secondAttribute="trailing" id="ZT3-OF-WJg"/>

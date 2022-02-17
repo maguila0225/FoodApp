@@ -32,11 +32,9 @@ class MealsCell: UICollectionViewCell {
     }
     
     public func configure(with mealImage: UIImage, and mealName: String){
-        DispatchQueue.main.async {
-            self.mealCellImage.image = mealImage
-            self.mealCellImage.layer.cornerRadius = 20
-            self.mealCellLabel.text = mealName
-        }
+            mealCellImage.image = mealImage
+            mealCellImage.layer.cornerRadius = 20
+            mealCellLabel.text = mealName
     }
     
     static func nib() -> UINib{
