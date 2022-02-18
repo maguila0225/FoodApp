@@ -29,7 +29,10 @@ class ChatVC: UIViewController {
         setupTableView()
         getUserDocID()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        chatHomeTableView.reloadData()
+    }
 }
 
 extension ChatVC{

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,10 +13,21 @@
             <objects>
                 <viewController storyboardIdentifier="MapVC" id="aSu-hZ-QQA" customClass="MapVC" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uli-mV-sQK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oPY-Mr-uux">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="AG5-zG-g3M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="oPY-Mr-uux" firstAttribute="leading" secondItem="AG5-zG-g3M" secondAttribute="leading" id="Fk4-BV-4uh"/>
+                            <constraint firstItem="oPY-Mr-uux" firstAttribute="top" secondItem="AG5-zG-g3M" secondAttribute="top" id="Mt0-4b-wtH"/>
+                            <constraint firstItem="AG5-zG-g3M" firstAttribute="trailing" secondItem="oPY-Mr-uux" secondAttribute="trailing" id="Qsb-1g-ytx"/>
+                            <constraint firstItem="AG5-zG-g3M" firstAttribute="bottom" secondItem="oPY-Mr-uux" secondAttribute="bottom" id="e0q-Tq-pez"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="Nj9-wx-8ck"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>

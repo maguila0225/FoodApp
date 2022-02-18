@@ -10,9 +10,20 @@ import UIKit
 class SplashVC: UIViewController {
     var signedInStatus = UserDefaults.standard.bool(forKey: "foodAppIsSignedIn")
     
+    var categoryList: [String] = []
+    var categoryImage: [String] = []
+    var mealList: [[String]] = []
+    var mealImage: [[String]] = []
+    var mealIDs: [[String]] = []
+    var mealListArray:[String] = []
+    var mealImageArray: [String] = []
+    var mealIDsArray: [String] = []
+    var inputURL: [String] = []
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,20 +44,145 @@ class SplashVC: UIViewController {
 }
 
 extension SplashVC{
+    // MARK: - Sign In Check
     func signedInCheck(){
         signedInStatus = UserDefaults.standard.bool(forKey: "foodAppIsSignedIn")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             if self.signedInStatus != true {
-               let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IntroVC") as! IntroVC
-                vc.modalPresentationStyle = .fullScreen
-                self.navigationController?.pushViewController(vc, animated: true)
+                self.pushIntroVC()
             }
             else {
-                let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
-                 vc.modalPresentationStyle = .fullScreen
-                print("foodAppIsSignedInUser: \(UserDefaults.standard.object(forKey: "foodAppIsSignedInUser") ?? "" )")
-                self.present(vc, animated: true, completion: nil)
+                self.getCategory()
             }
+        }
+    }
+    
+    //MARK: - Get Category
+    func getCategory(){
+        let categoriesURL = theMealDBURL().categoriesURL
+        let task = URLSession.shared.dataTask(with: URL(string: categoriesURL)!, completionHandler: { data, response, error in
+            guard let data = data, error == nil else {
+                print("\(error!.localizedDescription)")
+                return
+            }
+            self.decodeCategory(data: data)
+        })
+        task.resume()
+    }
+    
+    fileprivate func decodeCategory(data: Data){
+        var categories: Categories?
+        do{
+            categories = try JSONDecoder().decode(Categories.self, from: data)
+        }
+        catch{
+            NSLog("failed to convert \(error)")
+        }
+        guard let pulledCategories = categories else {
+            return
+        }
+        getCategoryList(pulledCategories)
+    }
+    
+    fileprivate func getCategoryList(_ pulledCategories: Categories) {
+        let categoryCount = pulledCategories.categories.count
+        for i in 0...(categoryCount - 1) {
+            let entry = pulledCategories.categories[i] as CategoryDetail
+            categoryList.append(entry.strCategory)
+            categoryImage.append(entry.strCategoryThumb)
+        }
+        
+        for i in 0...(self.categoryList.count - 1){
+            inputURL.append(theMealDBURL().mealsPerCategoryURL + self.categoryList[i])
+            mealList.append([])
+            mealImage.append([])
+            mealIDs.append([])
+        }
+        loopMealApiCall()
+    }
+    
+    func loopMealApiCall(){
+        for i in 0...(categoryList.count - 1){
+            getMealsFromCategory(url: inputURL[i], count: i)
+        }
+        presentHomeTabBarVC()
+    }
+    
+    func getMealsFromCategory(url: String, count: Int){
+        print(url)
+        let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
+            guard let data = data, error == nil else {
+                print("\(error!.localizedDescription)")
+                return
+            }
+            self.decodeMealPerCategory(data: data, count: count)
+        })
+        task.resume()
+    }
+    
+    fileprivate func decodeMealPerCategory(data: Data, count: Int){
+        var meals: Meals?
+        do{
+            meals = try JSONDecoder().decode(Meals.self, from: data)
+        }
+        catch{
+            NSLog("failed to convert \(error)")
+        }
+        guard let pulledMeals = meals else {
+            return
+        }
+        getMealsList(pulledMeals, count: count)
+
+    }
+    
+    fileprivate func getMealsList(_ pulledMeals: Meals, count: Int) {
+        let mealCount = pulledMeals.meals.count
+        clearMealsArray(mealCount: mealCount, pulledMeals: pulledMeals, count: count)
+    }
+    
+    fileprivate func clearMealsArray(mealCount: Int, pulledMeals: Meals, count: Int){
+        mealListArray = []
+        mealImageArray = []
+        mealIDsArray = []
+        loopMealArray(mealCount: mealCount, pulledMeals: pulledMeals, count: count)
+    }
+    
+    fileprivate func loopMealArray(mealCount: Int, pulledMeals: Meals, count: Int) {
+        for i in 0...(mealCount - 1) {
+            let entry = pulledMeals.meals[i] as MealDetail
+            mealListArray.append(entry.strMeal)
+            mealImageArray.append(entry.strMealThumb)
+            mealIDsArray.append(entry.idMeal)
+        }
+        setMealArrays(count)
+    }
+    
+    fileprivate func setMealArrays(_ count: Int) {
+        mealList[count] = mealListArray
+        mealImage[count] = mealImageArray
+        mealIDs[count] = mealIDsArray
+    }
+    
+    //MARK: - Screen Transition Functions
+    fileprivate func pushIntroVC(){
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IntroVC") as! IntroVC
+         vc.modalPresentationStyle = .fullScreen
+         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    fileprivate func presentHomeTabBarVC() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
+            let navVC = vc.viewControllers?[0] as! MealsVCNavVCViewController
+            let mealVC = navVC.viewControllers[0] as! MealsVC
+            mealVC.categoryList = self.categoryList
+            mealVC.categoryImage = self.categoryImage
+            mealVC.mealList = self.mealList
+            mealVC.mealImage = self.mealImage
+            mealVC.mealIDs = self.mealIDs
+            vc.modalPresentationStyle = .fullScreen
+            print("foodAppIsSignedInUser: \(UserDefaults.standard.object(forKey: "foodAppIsSignedInUser") ?? "" )")
+            self.present(vc, animated: true, completion: nil)
         }
     }
 }

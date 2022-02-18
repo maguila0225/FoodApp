@@ -259,7 +259,7 @@
         <!--Meals-->
         <scene sceneID="bAg-0C-rRg">
             <objects>
-                <navigationController storyboardIdentifier="UINavigationController-7yi-Fg-tqk" automaticallyAdjustsScrollViewInsets="NO" id="7yi-Fg-tqk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="UINavigationController-7yi-Fg-tqk" automaticallyAdjustsScrollViewInsets="NO" id="7yi-Fg-tqk" customClass="MealsVCNavVCViewController" customModule="FoodApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Meals" image="square.grid.2x2.fill" catalog="system" id="vJ1-6q-glj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7TM-88-0vQ">

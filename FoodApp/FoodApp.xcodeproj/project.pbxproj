@@ -58,6 +58,7 @@
 		5BD93E8427B91A3500F0C9B9 /* MessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E8327B91A3500F0C9B9 /* MessageVC.swift */; };
 		5BD93E8727BB25B700F0C9B9 /* NewMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD93E8527BB25B700F0C9B9 /* NewMessageTableViewCell.swift */; };
 		5BD93E8827BB25B700F0C9B9 /* NewMessageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD93E8627BB25B700F0C9B9 /* NewMessageTableViewCell.xib */; };
+		5BFDB9C727BF55CA00B9424B /* MealsVCNavVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFDB9C627BF55CA00B9424B /* MealsVCNavVCViewController.swift */; };
 		C45BA2B4CE43D5C812B77C48 /* Pods_FoodApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +116,7 @@
 		5BD93E8327B91A3500F0C9B9 /* MessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVC.swift; sourceTree = "<group>"; };
 		5BD93E8527BB25B700F0C9B9 /* NewMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageTableViewCell.swift; sourceTree = "<group>"; };
 		5BD93E8627BB25B700F0C9B9 /* NewMessageTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewMessageTableViewCell.xib; sourceTree = "<group>"; };
+		5BFDB9C627BF55CA00B9424B /* MealsVCNavVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsVCNavVCViewController.swift; sourceTree = "<group>"; };
 		820E126AFFDF64B3801479B1 /* Pods-FoodApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.release.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.release.xcconfig"; sourceTree = "<group>"; };
 		EDA63C89756955210AE017E9 /* Pods_FoodApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6FC71A318EEB9C9AAAB0A7C /* Pods-FoodApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodApp/Pods-FoodApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				5BD93E3B27B206D000F0C9B9 /* MealsVC.swift */,
 				5BD93E6B27B5D1FD00F0C9B9 /* AllCategoriesVC.swift */,
 				5BD93E7327B5F2D300F0C9B9 /* MealDetailVC.swift */,
+				5BFDB9C627BF55CA00B9424B /* MealsVCNavVCViewController.swift */,
 			);
 			path = Meals;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				5BD93E6727B4F01A00F0C9B9 /* MealsCell.swift in Sources */,
 				5BD93E6A27B55FFE00F0C9B9 /* ImageLoaderExtension.swift in Sources */,
 				5BD93E7F27B6431A00F0C9B9 /* ChatHomeTableViewCell.swift in Sources */,
+				5BFDB9C727BF55CA00B9424B /* MealsVCNavVCViewController.swift in Sources */,
 				5BD93E2727AE74BA00F0C9B9 /* LocationSearchVC.swift in Sources */,
 				5B2D274E27BC16A600E853D5 /* DateToStringExtension.swift in Sources */,
 				5BD93E7927B5FD4400F0C9B9 /* MealDetailCell.swift in Sources */,
