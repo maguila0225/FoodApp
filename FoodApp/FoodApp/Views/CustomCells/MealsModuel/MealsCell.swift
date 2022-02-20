@@ -16,6 +16,8 @@ class MealsCell: UICollectionViewCell {
     @IBOutlet weak var mealCellLabel: UILabel!
     @IBOutlet weak var mealCellBackground: UIView!
     
+    var cellID: String = ""
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         mealCellBackground.layer.cornerRadius = 20
@@ -31,8 +33,8 @@ class MealsCell: UICollectionViewCell {
         }
     }
     
-    public func configure(with mealImage: UIImage, and mealName: String){
-            mealCellImage.image = mealImage
+    public func configure(with mealImage: UIImage?, and mealName: String){
+            mealCellImage.image = mealImage ?? UIImage(systemName: "flame")
             mealCellImage.layer.cornerRadius = 20
             mealCellLabel.text = mealName
     }

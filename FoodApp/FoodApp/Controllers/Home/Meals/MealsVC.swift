@@ -27,9 +27,9 @@ class MealsVC: UIViewController {
     var mealListContainer: [String] = []
     var mealImageContainer: [String] = []
     var mealIDsContainer: [String] = []
-    
-    var thumbnails: [UIImage?] = []
+
     let categoriesURL = theMealDBURL().categoriesURL
+    
     var categorySelection = ""
     var mealSelectionID = ""
     var mealSelectionName = ""
@@ -43,6 +43,14 @@ class MealsVC: UIViewController {
         setupCategoryCollectionView()
         setupmealsCollectionView()
         print("categoryListCount \(categoryList.count)")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            self.initialMealCollectionViewContents()
+            self.mealsCollectionView.reloadData()
+        }
     }
     
     @IBAction func searchBarTouchDown(_ sender: Any) {
@@ -62,6 +70,12 @@ extension MealsVC{
         magnifier.frame = CGRect(x: 16, y: 13, width: 24, height: 24)
         magnifier.image = UIImage(systemName: "magnifyingglass")
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func initialMealCollectionViewContents(){
+        mealListContainer = mealList[0]
+        mealImageContainer = mealImage[0]
+        mealIDsContainer = mealIDs[0]
     }
     
 // MARK: - Screen Transition Functions
@@ -116,7 +130,6 @@ extension MealsVC: UICollectionViewDataSource{
         if collectionView == mealsCollectionView {
             print("number of meals: \(mealListContainer.count)")
             cellCount = mealListContainer.count
-           
         }
         if collectionView == categoryCollectionView {
             print("number of categories: \(categoryList.count)")
@@ -130,8 +143,16 @@ extension MealsVC: UICollectionViewDataSource{
         if collectionView == mealsCollectionView {
             let mealCell = mealsCollectionView.dequeueReusableCell(withReuseIdentifier: MealsCell.identifier,
                                                                    for: indexPath) as! MealsCell
+            
+            mealCell.mealCellImage.image = UIImage(systemName: "flame")
+            
+            let cellIdentifier = mealIDsContainer[indexPath.row]
+            mealCell.cellID = cellIdentifier
+            
+            
             let mealName = self.mealListContainer[indexPath.row]
-            let mealImage = UIImage(systemName: "flame")!
+            let mealImage = loadMealImage(indexPath, mealCell, cellIdentifier)
+            
             DispatchQueue.main.async {
                 mealCell.configure(with: mealImage, and: mealName)
             }
@@ -145,6 +166,18 @@ extension MealsVC: UICollectionViewDataSource{
             returnCell = categoryCell
         }
         return returnCell
+    }
+    
+    fileprivate func loadMealImage(_ indexPath: IndexPath, _ mealCell: MealsCell, _ cellIdentifier: String) -> UIImage {
+        let url = URL(string: mealImageContainer[indexPath.row])!
+        if (mealCell.cellID == cellIdentifier){
+            let mealImage = UIImageView().loadImageFromURL(url: url)
+            return mealImage
+        } else {
+            let mealImage = UIImage(systemName: "flame")!
+            print("image loaded mismatch")
+            return mealImage
+        }
     }
 }
 

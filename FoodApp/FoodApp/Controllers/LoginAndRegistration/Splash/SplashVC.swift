@@ -36,6 +36,7 @@ class SplashVC: UIViewController {
         NSLog("View did appear")
         signedInCheck()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated);
@@ -47,14 +48,12 @@ extension SplashVC{
     // MARK: - Sign In Check
     func signedInCheck(){
         signedInStatus = UserDefaults.standard.bool(forKey: "foodAppIsSignedIn")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             if self.signedInStatus != true {
                 self.pushIntroVC()
             }
             else {
                 self.getCategory()
             }
-        }
     }
     
     //MARK: - Get Category
@@ -84,6 +83,8 @@ extension SplashVC{
         getCategoryList(pulledCategories)
     }
     
+
+    
     fileprivate func getCategoryList(_ pulledCategories: Categories) {
         let categoryCount = pulledCategories.categories.count
         for i in 0...(categoryCount - 1) {
@@ -94,11 +95,15 @@ extension SplashVC{
         
         for i in 0...(self.categoryList.count - 1){
             inputURL.append(theMealDBURL().mealsPerCategoryURL + self.categoryList[i])
-            mealList.append([])
-            mealImage.append([])
-            mealIDs.append([])
+            setMealArraySize()
         }
         loopMealApiCall()
+    }
+    
+    fileprivate func setMealArraySize() {
+        mealList.append([])
+        mealImage.append([])
+        mealIDs.append([])
     }
     
     func loopMealApiCall(){
@@ -171,19 +176,24 @@ extension SplashVC{
     }
     
     fileprivate func presentHomeTabBarVC() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HomeTabBarVC") as! HomeTabBarVC
             let navVC = vc.viewControllers?[0] as! MealsVCNavVCViewController
             let mealVC = navVC.viewControllers[0] as! MealsVC
-            mealVC.categoryList = self.categoryList
-            mealVC.categoryImage = self.categoryImage
-            mealVC.mealList = self.mealList
-            mealVC.mealImage = self.mealImage
-            mealVC.mealIDs = self.mealIDs
+            self.passApiData(mealVC)
             vc.modalPresentationStyle = .fullScreen
             print("foodAppIsSignedInUser: \(UserDefaults.standard.object(forKey: "foodAppIsSignedInUser") ?? "" )")
             self.present(vc, animated: true, completion: nil)
-        }
+        })
+    }
+    
+    fileprivate func passApiData(_ mealVC: MealsVC) {
+        mealVC.categoryList = self.categoryList
+        mealVC.categorySelection = self.categoryList[0]
+        mealVC.categoryImage = self.categoryImage
+        mealVC.mealList = self.mealList
+        mealVC.mealImage = self.mealImage
+        mealVC.mealIDs = self.mealIDs
     }
 }
 
