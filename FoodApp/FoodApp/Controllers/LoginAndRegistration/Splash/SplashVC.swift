@@ -114,7 +114,6 @@ extension SplashVC{
     }
     
     func getMealsFromCategory(url: String, count: Int){
-        print(url)
         let task = URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { data, response, error in
             guard let data = data, error == nil else {
                 print("\(error!.localizedDescription)")
@@ -182,7 +181,6 @@ extension SplashVC{
             let mealVC = navVC.viewControllers[0] as! MealsVC
             self.passApiData(mealVC)
             vc.modalPresentationStyle = .fullScreen
-            print("foodAppIsSignedInUser: \(UserDefaults.standard.object(forKey: "foodAppIsSignedInUser") ?? "" )")
             self.present(vc, animated: true, completion: nil)
         })
     }

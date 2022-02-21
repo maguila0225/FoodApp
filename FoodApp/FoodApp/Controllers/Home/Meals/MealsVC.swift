@@ -13,29 +13,22 @@ class MealsVC: UIViewController {
     @IBOutlet weak var searchBarOutlet: UITextField!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var mealsCollectionView: UICollectionView!
-
+    
     let magnifier = UIImageView()
     var searchTextField = UITextField()
-    var categoriesFromAPI = Categories(categories: [])
     var categoryList: [String] = []
     var categoryImage: [String] = []
-    
     var mealList: [[String]] = []
     var mealImage: [[String]] = []
     var mealIDs: [[String]] = []
-    
     var mealListContainer: [String] = []
     var mealImageContainer: [String] = []
     var mealIDsContainer: [String] = []
-
     let categoriesURL = theMealDBURL().categoriesURL
-    
     var categorySelection = ""
-    var mealSelectionID = ""
-    var mealSelectionName = ""
-    var mealSelectionImage = ""
-    
     var categorySelectionID: Int = 0
+    var imageCache = NSCache<NSString, NSData>()
+    //    [String:UIImage] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +47,9 @@ class MealsVC: UIViewController {
     }
     
     @IBAction func searchBarTouchDown(_ sender: Any) {
-
+        
     }
-
+    
     @IBAction func seeAllCategories(_ sender: Any) {
         presentAllCategoriesVC()
     }
@@ -78,7 +71,7 @@ extension MealsVC{
         mealIDsContainer = mealIDs[0]
     }
     
-// MARK: - Screen Transition Functions
+    // MARK: - Screen Transition Functions
     fileprivate func presentAllCategoriesVC() {
         let vc = UIStoryboard(name: "Meals", bundle: nil).instantiateViewController(withIdentifier: "AllCategoriesVC") as! AllCategoriesVC
         vc.categoryList = categoryList
@@ -86,20 +79,13 @@ extension MealsVC{
         present(vc, animated: true, completion: nil)
     }
     
-    func pushToMealDetailVC(){
-        let vc = UIStoryboard(name: "Meals", bundle: nil).instantiateViewController(withIdentifier: "MealDetailVC") as! MealDetailVC
-        vc.mealID = mealSelectionID
-        vc.mealName = mealSelectionName
-        vc.mealImage = mealSelectionImage
-        navigationController?.pushViewController(vc, animated: true)
-    }
 }
 
 //MARK: - Collection View Delegate
 extension MealsVC: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == mealsCollectionView {
-
+            
         }
         
         if collectionView == categoryCollectionView{
@@ -120,7 +106,7 @@ extension MealsVC: UICollectionViewDelegate{
         mealImageContainer = mealImage[indexPath.row]
         mealIDsContainer = mealIDs[indexPath.row]
     }
-
+    
 }
 
 //MARK: - Collection View Data Source
@@ -144,15 +130,15 @@ extension MealsVC: UICollectionViewDataSource{
             let mealCell = mealsCollectionView.dequeueReusableCell(withReuseIdentifier: MealsCell.identifier,
                                                                    for: indexPath) as! MealsCell
             
-            mealCell.mealCellImage.image = UIImage(systemName: "flame")
-            
             let cellIdentifier = mealIDsContainer[indexPath.row]
             mealCell.cellID = cellIdentifier
             
+            mealCell.mealCellImage.image = UIImage(systemName: "flame")
             
             let mealName = self.mealListContainer[indexPath.row]
-            let mealImage = loadMealImage(indexPath, mealCell, cellIdentifier)
-            
+            let mealImage = loadMealImage(indexPath: indexPath,
+                                          mealCell: mealCell,
+                                          cellIdentifier: cellIdentifier)
             DispatchQueue.main.async {
                 mealCell.configure(with: mealImage, and: mealName)
             }
@@ -162,21 +148,41 @@ extension MealsVC: UICollectionViewDataSource{
         if collectionView == categoryCollectionView{
             let categoryCell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.identifier,
                                                                           for: indexPath) as! CategoryCell
-                categoryCell.configure(with: "\(self.categoryList[indexPath.row])")
+            categoryCell.configure(with: "\(self.categoryList[indexPath.row])")
             returnCell = categoryCell
         }
         return returnCell
     }
     
-    fileprivate func loadMealImage(_ indexPath: IndexPath, _ mealCell: MealsCell, _ cellIdentifier: String) -> UIImage {
+    fileprivate func loadMealImage(indexPath: IndexPath, mealCell: MealsCell, cellIdentifier: String) -> UIImage {
         let url = URL(string: mealImageContainer[indexPath.row])!
-        if (mealCell.cellID == cellIdentifier){
-            let mealImage = UIImageView().loadImageFromURL(url: url)
+        let cacheURL = mealImageContainer[indexPath.row]
+        if let cachedImage = imageCache.object(forKey: cacheURL as NSString){
+            let imageData = cachedImage as Data
+            let mealImage = UIImage(data: imageData)!
             return mealImage
-        } else {
-            let mealImage = UIImage(systemName: "flame")!
-            print("image loaded mismatch")
-            return mealImage
+        }
+        else{
+            var downloadedMealImage = UIImage(systemName: "flame")
+            if (mealCell.cellID == cellIdentifier){
+                let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                    guard let imageData = data, error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    let cacheData = imageData as NSData
+                    self.imageCache.setObject(cacheData, forKey: cacheURL as NSString)
+                    downloadedMealImage = UIImage(data: imageData)
+                    DispatchQueue.main.async {
+                        mealCell.mealCellImage.image = UIImage(data: imageData)!
+                    }
+                }
+                task.resume()
+                return downloadedMealImage!
+            }
+            else{
+                return downloadedMealImage!
+            }
         }
     }
 }
@@ -209,7 +215,7 @@ extension MealsVC: UICollectionViewDelegateFlowLayout{
         categoryCollectionView.register(CategoryCell.nib(), forCellWithReuseIdentifier: CategoryCell.identifier)
         categoryCollectionView.collectionViewLayout = layout
     }
-
+    
 }
 
 
